@@ -438,7 +438,8 @@ public class LoginFrame extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
         );
 
-        MainFrame mainFrame = new MainFrame();
+        MainFrame mainFrame;
+        mainFrame = new MainFrame();
         mainFrame.setVisible(true);
         this.dispose();
 
@@ -588,4 +589,10 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtRegUsername;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    private static class MainFrame {
+
+        public MainFrame() {
+        }
+    }
 }
