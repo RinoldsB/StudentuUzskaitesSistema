@@ -22,8 +22,9 @@ public class LoginFrame extends javax.swing.JFrame {
      * Creates new form LoginFrame
      */
     public LoginFrame() {
-         initComponents();
+        initComponents();
         setLocationRelativeTo(null);
+        btnLogout.addActionListener(e -> MainMenuDialog.dispose());
     }
 
     /**
@@ -438,10 +439,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
         );
 
-        MainFrame mainFrame;
-        mainFrame = new MainFrame();
-        mainFrame.setVisible(true);
-        this.dispose();
+        openMainMenu();
 
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(
@@ -505,6 +503,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        RegisterDialog.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
@@ -590,9 +589,20 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
-    private static class MainFrame {
+    /**
+     * Parāda galveno izvēlni un, kad tā tiek aizvērta (poga "Iziet"),
+     * beidz sesiju un atgriež pieteikšanās logu.
+     */
+    private void openMainMenu() {
+        setVisible(false);
+        MainMenuDialog.setModal(true);
+        MainMenuDialog.pack();
+        MainMenuDialog.setLocationRelativeTo(null);
+        MainMenuDialog.setVisible(true);
 
-        public MainFrame() {
-        }
+        Session.logout();
+        txtUsername.setText("");
+        txtPassword.setText("");
+        setVisible(true);
     }
 }
