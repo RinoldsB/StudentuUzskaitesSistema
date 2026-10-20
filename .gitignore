@@ -2,6 +2,3 @@ build/
 dist/
 nbproject/private/
 *.class
-derby.log
-StudentuUzskaitesDB/
-StudentuDB/

@@ -81,12 +81,6 @@ public class UserDAO {
             ps.setString(3, fullName);
             ps.setString(4, role);
             return ps.executeUpdate() == 1;
-        } catch (SQLException e) {
-            // 23505 = UNIQUE ierobežojuma pārkāpums (lietotājvārds jau aizņemts)
-            if ("23505".equals(e.getSQLState())) {
-                return false;
-            }
-            throw e;
         }
     }
 

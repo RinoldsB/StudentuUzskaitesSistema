@@ -22,9 +22,8 @@ public class LoginFrame extends javax.swing.JFrame {
      * Creates new form LoginFrame
      */
     public LoginFrame() {
-        initComponents();
+         initComponents();
         setLocationRelativeTo(null);
-        btnLogout.addActionListener(e -> MainMenuDialog.dispose());
     }
 
     /**
@@ -71,6 +70,36 @@ public class LoginFrame extends javax.swing.JFrame {
         btnClearStudent = new javax.swing.JButton();
         btnUpdateStudent = new javax.swing.JButton();
         btnDeleteStudent = new javax.swing.JButton();
+        GroupDialog = new javax.swing.JDialog();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtGroupName = new javax.swing.JTextField();
+        cmbCourse = new javax.swing.JComboBox<>();
+        cmbTeacher = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblGroups = new javax.swing.JTable();
+        btnBack1 = new javax.swing.JButton();
+        btnAddStudent1 = new javax.swing.JButton();
+        btnClearStudent1 = new javax.swing.JButton();
+        btnUpdateStudent1 = new javax.swing.JButton();
+        btnDeleteStudent1 = new javax.swing.JButton();
+        GradeDialog = new javax.swing.JDialog();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        cmbStudent = new javax.swing.JComboBox<>();
+        cmbSubject = new javax.swing.JComboBox<>();
+        txtGrade = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblGroups1 = new javax.swing.JTable();
+        btnBack2 = new javax.swing.JButton();
+        btnAddStudent2 = new javax.swing.JButton();
+        btnClearStudent2 = new javax.swing.JButton();
+        btnUpdateStudent2 = new javax.swing.JButton();
+        btnDeleteStudent2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
@@ -157,12 +186,47 @@ public class LoginFrame extends javax.swing.JFrame {
         lblTitle.setText("Studentu uzskaites sistēma");
 
         btnStudents.setText("Studenti");
+        btnStudents.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnStudentsMouseClicked(evt);
+            }
+        });
+        btnStudents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentsActionPerformed(evt);
+            }
+        });
 
         btnGroups.setText("Grupas");
+        btnGroups.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGroupsMouseClicked(evt);
+            }
+        });
+        btnGroups.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGroupsActionPerformed(evt);
+            }
+        });
 
         btnLogout.setText("Iziet");
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseClicked(evt);
+            }
+        });
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         btnGrades.setText("Atzīmes");
+        btnGrades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGradesMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout MainMenuDialogLayout = new javax.swing.GroupLayout(MainMenuDialog.getContentPane());
         MainMenuDialog.getContentPane().setLayout(MainMenuDialogLayout);
@@ -236,10 +300,20 @@ public class LoginFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblStudents);
 
         btnBack.setText("Atpakaļ");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnAddStudent.setText("Pievienot");
 
         btnClearStudent.setText("Notīrīt");
+        btnClearStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearStudentActionPerformed(evt);
+            }
+        });
 
         btnUpdateStudent.setText("Labot");
 
@@ -334,6 +408,244 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(119, 119, 119))
         );
 
+        GroupDialog.setTitle("Grupas");
+
+        jLabel12.setText("Grupas nosaukums:");
+
+        jLabel13.setText("Kurss:");
+
+        jLabel14.setText("Grupu saraksts:");
+
+        jLabel15.setText("Pasniedzējs:");
+
+        txtGroupName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGroupNameActionPerformed(evt);
+            }
+        });
+
+        cmbCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmbTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        tblGroups.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Grupas nosaukums", "Kurss", "Pasniedzējs"
+            }
+        ));
+        jScrollPane2.setViewportView(tblGroups);
+
+        btnBack1.setText("Atpakaļ");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+
+        btnAddStudent1.setText("Pievienot");
+
+        btnClearStudent1.setText("Notīrīt");
+
+        btnUpdateStudent1.setText("Labot");
+
+        btnDeleteStudent1.setText("Dzēst");
+
+        javax.swing.GroupLayout GroupDialogLayout = new javax.swing.GroupLayout(GroupDialog.getContentPane());
+        GroupDialog.getContentPane().setLayout(GroupDialogLayout);
+        GroupDialogLayout.setHorizontalGroup(
+            GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GroupDialogLayout.createSequentialGroup()
+                .addGroup(GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GroupDialogLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addGroup(GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(GroupDialogLayout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnClearStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(GroupDialogLayout.createSequentialGroup()
+                                .addComponent(btnAddStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(btnDeleteStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(btnUpdateStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(GroupDialogLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addGroup(GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(cmbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(74, 74, 74)
+                        .addGroup(GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addGroup(GroupDialogLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(cmbTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(GroupDialogLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel12))
+                    .addGroup(GroupDialogLayout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(txtGroupName, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        GroupDialogLayout.setVerticalGroup(
+            GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GroupDialogLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtGroupName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClearStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+
+        GradeDialog.setTitle("Atzīmes");
+
+        jLabel16.setText("Students:");
+
+        jLabel17.setText("Priekšmets:");
+
+        jLabel18.setText("Atzīme:");
+
+        jLabel19.setText("Atzīmju saraksts:");
+
+        cmbStudent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmbSubject.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        tblGroups1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Students", "Priekšmets", "Atzīme", "Datums"
+            }
+        ));
+        jScrollPane3.setViewportView(tblGroups1);
+
+        btnBack2.setText("Atpakaļ");
+        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack2ActionPerformed(evt);
+            }
+        });
+
+        btnAddStudent2.setText("Pievienot");
+
+        btnClearStudent2.setText("Notīrīt");
+
+        btnUpdateStudent2.setText("Labot");
+
+        btnDeleteStudent2.setText("Dzēst");
+
+        javax.swing.GroupLayout GradeDialogLayout = new javax.swing.GroupLayout(GradeDialog.getContentPane());
+        GradeDialog.getContentPane().setLayout(GradeDialogLayout);
+        GradeDialogLayout.setHorizontalGroup(
+            GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GradeDialogLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GradeDialogLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(76, 76, 76)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(GradeDialogLayout.createSequentialGroup()
+                        .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(GradeDialogLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(GradeDialogLayout.createSequentialGroup()
+                                        .addGap(74, 74, 74)
+                                        .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(btnClearStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(GradeDialogLayout.createSequentialGroup()
+                                        .addComponent(btnAddStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(45, 45, 45)
+                                        .addComponent(btnDeleteStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(btnUpdateStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel16)
+                            .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cmbSubject, 0, 126, Short.MAX_VALUE)
+                                .addComponent(cmbStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(40, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GradeDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
+        );
+        GradeDialogLayout.setVerticalGroup(
+            GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GradeDialogLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel16)
+                .addGap(9, 9, 9)
+                .addComponent(cmbStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GradeDialogLayout.createSequentialGroup()
+                        .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(txtGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GradeDialogLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(10, 10, 10)))
+                .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClearStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Studentu uzskaites sistēma - Pieteikšanās");
 
@@ -402,7 +714,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-    
+        
     String username = txtUsername.getText().trim();
     String password = new String(txtPassword.getPassword());
 
@@ -432,14 +744,15 @@ public class LoginFrame extends javax.swing.JFrame {
 
         Session.login(user);
 
-        JOptionPane.showMessageDialog(
-                this,
-                "Ieeja ir veiksmīga!",
-                "Informācija",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        this.setVisible(false);
 
-        openMainMenu();
+        MainMenuDialog.pack();
+        MainMenuDialog.setLocationRelativeTo(null);
+        MainMenuDialog.setModal(true);
+        MainMenuDialog.setVisible(true);
+
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
 
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(
@@ -449,66 +762,191 @@ public class LoginFrame extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE
         );
     }
-
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        txtFullName.setText("");
-        txtRegUsername.setText("");
-        txtRegPassword.setText("");
-        RegisterDialog.setModal(true);
-        RegisterDialog.pack();
-        RegisterDialog.setLocationRelativeTo(this);
-        RegisterDialog.setVisible(true);
-        txtUsername.setText("");
-        txtPassword.setText("");
+    txtFullName.setText("");
+    txtRegUsername.setText("");
+    txtRegPassword.setText("");
+
+    // Paslēpj galveno JFrame
+    this.setVisible(false);
+
+    // Atver tikai reģistrācijas dialogu
+    RegisterDialog.pack();
+    RegisterDialog.setLocationRelativeTo(null);
+    RegisterDialog.setModal(true);
+    RegisterDialog.setVisible(true);
+
+    // Kad reģistrācijas dialogs aizveras,
+    // parāda JFrame atkal
+    this.setLocationRelativeTo(null);
+    this.setVisible(true);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String fullName = txtFullName.getText().trim();
-        String username = txtRegUsername.getText().trim();
-        String password = new String(txtRegPassword.getPassword());
+         String fullName = txtFullName.getText().trim();
+    String username = txtRegUsername.getText().trim();
+    String password = new String(txtRegPassword.getPassword());
 
-        if (fullName.length() < 3 || !fullName.contains(" ")) {
-            JOptionPane.showMessageDialog(RegisterDialog, "Ievadiet vārdu un uzvārdu!",
-                    "Kļūda", JOptionPane.ERROR_MESSAGE);
+    if (fullName.length() < 3 || !fullName.contains(" ")) {
+        JOptionPane.showMessageDialog(
+                RegisterDialog,
+                "Ievadiet vārdu un uzvārdu!",
+                "Kļūda",
+                JOptionPane.ERROR_MESSAGE
+        );
+        return;
+    }
+
+    if (!Validator.isValidUsername(username)) {
+        JOptionPane.showMessageDialog(
+                RegisterDialog,
+                "Lietotājvārdam jābūt 3–50 simbolus garam "
+                + "un jāsatur tikai burti, cipari vai _.",
+                "Kļūda",
+                JOptionPane.ERROR_MESSAGE
+        );
+        return;
+    }
+
+    if (!Validator.isValidPassword(password)) {
+        JOptionPane.showMessageDialog(
+                RegisterDialog,
+                "Parolei jābūt vismaz 6 simboliem!",
+                "Kļūda",
+                JOptionPane.ERROR_MESSAGE
+        );
+        return;
+    }
+
+    try {
+        boolean registered = new UserDAO().register(
+                username, password, fullName, "TEACHER"
+        );
+
+        if (!registered) {
+            JOptionPane.showMessageDialog(
+                    RegisterDialog,
+                    "Šis lietotājvārds jau ir aizņemts!",
+                    "Kļūda",
+                    JOptionPane.ERROR_MESSAGE
+            );
             return;
         }
-        if (!Validator.isValidUsername(username)) {
-            JOptionPane.showMessageDialog(RegisterDialog,
-                    "Lietotājvārds: 3-50 simboli (burti, cipari, _).",
-                    "Kļūda", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (!Validator.isValidPassword(password)) {
-            JOptionPane.showMessageDialog(RegisterDialog, "Parolei jābūt vismaz 6 simboliem!",
-                    "Kļūda", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        try {
-            boolean ok = new UserDAO().register(username, password, fullName, "TEACHER");
-            if (!ok) {
-                JOptionPane.showMessageDialog(RegisterDialog, "Šis lietotājvārds jau ir aizņemts!",
-                        "Kļūda", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            JOptionPane.showMessageDialog(RegisterDialog, "Reģistrācija veiksmīga!",
-                    "Informācija", JOptionPane.INFORMATION_MESSAGE);
-            RegisterDialog.dispose();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(RegisterDialog, "Datu bāzes kļūda: " + ex.getMessage(),
-                    "Kļūda", JOptionPane.ERROR_MESSAGE);
-        }
-    
+
+        JOptionPane.showMessageDialog(
+                RegisterDialog,
+                "Reģistrācija veiksmīga! Tagad vari ielogoties.",
+                "Informācija",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        RegisterDialog.setVisible(false);
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(
+                RegisterDialog,
+                "Datubāzes kļūda: " + ex.getMessage(),
+                "Kļūda",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        RegisterDialog.dispose();
+        RegisterDialog.setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFullNameActionPerformed
+
+    private void txtGroupNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGroupNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGroupNameActionPerformed
+
+    private void btnStudentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentsMouseClicked
+    MainMenuDialog.setVisible(false);
+
+    StudentDialog.pack();
+    StudentDialog.setLocationRelativeTo(null);
+    StudentDialog.setModal(true);
+    StudentDialog.setVisible(true);
+
+    MainMenuDialog.setLocationRelativeTo(null);
+    MainMenuDialog.setVisible(true);
+    }//GEN-LAST:event_btnStudentsMouseClicked
+
+    private void btnStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentsActionPerformed
+
+    }//GEN-LAST:event_btnStudentsActionPerformed
+
+    private void btnGroupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGroupsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGroupsActionPerformed
+
+    private void btnGroupsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGroupsMouseClicked
+    MainMenuDialog.setVisible(false);
+
+    GroupDialog.pack();
+    GroupDialog.setLocationRelativeTo(null);
+    GroupDialog.setModal(true);
+    GroupDialog.setVisible(true);
+
+    MainMenuDialog.setLocationRelativeTo(null);
+    MainMenuDialog.setVisible(true);
+    }//GEN-LAST:event_btnGroupsMouseClicked
+
+    private void btnGradesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGradesMouseClicked
+    MainMenuDialog.setVisible(false);
+
+    GradeDialog.pack();
+    GradeDialog.setLocationRelativeTo(null);
+    GradeDialog.setModal(true);
+    GradeDialog.setVisible(true);
+
+    MainMenuDialog.setLocationRelativeTo(null);
+    MainMenuDialog.setVisible(true);
+    }//GEN-LAST:event_btnGradesMouseClicked
+
+    private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
+    MainMenuDialog.setVisible(false);
+    }//GEN-LAST:event_btnLogoutMouseClicked
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    StudentDialog.setVisible(false);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+    GroupDialog.setVisible(false);
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
+    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
+    GradeDialog.setVisible(false);
+    }//GEN-LAST:event_btnBack2ActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    MainMenuDialog.setVisible(false);
+
+    txtUsername.setText("");
+    txtPassword.setText("");
+
+    this.setLocationRelativeTo(null);
+    this.setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnClearStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearStudentActionPerformed
+     txtFirstName.setText("");
+    txtLastName.setText("");
+    txtPersonalCode.setText("");
+    txtEmail.setText("");
+    txtPhone.setText("");
+
+    cmbGroup.setSelectedIndex(-1);
+    tblStudents.clearSelection();
+    }//GEN-LAST:event_btnClearStudentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -546,14 +984,24 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog GradeDialog;
+    private javax.swing.JDialog GroupDialog;
     private javax.swing.JDialog MainMenuDialog;
     private javax.swing.JDialog RegisterDialog;
     private javax.swing.JDialog StudentDialog;
     private javax.swing.JButton btnAddStudent;
+    private javax.swing.JButton btnAddStudent1;
+    private javax.swing.JButton btnAddStudent2;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBack1;
+    private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClearStudent;
+    private javax.swing.JButton btnClearStudent1;
+    private javax.swing.JButton btnClearStudent2;
     private javax.swing.JButton btnDeleteStudent;
+    private javax.swing.JButton btnDeleteStudent1;
+    private javax.swing.JButton btnDeleteStudent2;
     private javax.swing.JButton btnGrades;
     private javax.swing.JButton btnGroups;
     private javax.swing.JButton btnLogin;
@@ -562,10 +1010,24 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnStudents;
     private javax.swing.JButton btnUpdateStudent;
+    private javax.swing.JButton btnUpdateStudent1;
+    private javax.swing.JButton btnUpdateStudent2;
+    private javax.swing.JComboBox<String> cmbCourse;
     private javax.swing.JComboBox<String> cmbGroup;
+    private javax.swing.JComboBox<String> cmbStudent;
+    private javax.swing.JComboBox<String> cmbSubject;
+    private javax.swing.JComboBox<String> cmbTeacher;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -575,11 +1037,17 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JTable tblGroups;
+    private javax.swing.JTable tblGroups1;
     private javax.swing.JTable tblStudents;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtFullName;
+    private javax.swing.JTextField txtGrade;
+    private javax.swing.JTextField txtGroupName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPersonalCode;
@@ -588,21 +1056,4 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtRegUsername;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * Parāda galveno izvēlni un, kad tā tiek aizvērta (poga "Iziet"),
-     * beidz sesiju un atgriež pieteikšanās logu.
-     */
-    private void openMainMenu() {
-        setVisible(false);
-        MainMenuDialog.setModal(true);
-        MainMenuDialog.pack();
-        MainMenuDialog.setLocationRelativeTo(null);
-        MainMenuDialog.setVisible(true);
-
-        Session.logout();
-        txtUsername.setText("");
-        txtPassword.setText("");
-        setVisible(true);
-    }
 }
