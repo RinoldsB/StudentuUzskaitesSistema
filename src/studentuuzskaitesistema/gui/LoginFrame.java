@@ -24,6 +24,7 @@ public class LoginFrame extends javax.swing.JFrame {
     public LoginFrame() {
          initComponents();
         setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -284,7 +285,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel11.setText("Tālrunis:");
 
-        cmbGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "K-11", "V-11", "K-21", "V-21", "K-31", "V-31", "K-41", "V-41", "KD-11", "KD-21", "KD-31", "KD-41", "P-11", "P-21", "P-31", "P-41", "P-41_M", "PV-11", "Vsm-11", "PR-11", "PR-21", "PR-31", "PR-32", "ATS-31", "PR-41", "PR-42", "ATS-41", "ET-11", "AE-21", "AE-31", "AE-41", "DT-11", "DT-21", "DT-31", "DT-41", "ET-12", "ET-21", "ET-31", "ET-41", "FR-11", "FR-21", "FR-31", "LD-11", "LD-21", "LD-31", "LD-41", "LDV-11", "TS-11", "TS-21", "TS-31", "KS-41", "TS-41", "ESV-11" }));
 
         tblStudents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -307,6 +308,16 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         btnAddStudent.setText("Pievienot");
+        btnAddStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddStudentMouseClicked(evt);
+            }
+        });
+        btnAddStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStudentActionPerformed(evt);
+            }
+        });
 
         btnClearStudent.setText("Notīrīt");
         btnClearStudent.addActionListener(new java.awt.event.ActionListener() {
@@ -318,6 +329,11 @@ public class LoginFrame extends javax.swing.JFrame {
         btnUpdateStudent.setText("Labot");
 
         btnDeleteStudent.setText("Dzēst");
+        btnDeleteStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteStudentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout StudentDialogLayout = new javax.swing.GroupLayout(StudentDialog.getContentPane());
         StudentDialog.getContentPane().setLayout(StudentDialogLayout);
@@ -424,9 +440,14 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        cmbCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
 
-        cmbTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nonna Akopova", "Jeļena Aleksejeva", "Ilona Antoneviča", "Inta Baika", "Inna Barkova", "Olga Bazarova", "Svetlana Beļakova", "Anda Bernāne", "Dmitrijs Bogdanovs", "Gabriela Cimmermane", "Žaneta Dalecka", "Anželika Dorofejeva", "Irēna Dortiņa", "Andrejs Dortiņš", "Ilze Drozdovska", "Mihails Fjodorovs", "Olga Gaujeniete", "Aleksejs Gorbuls", "Anna Gurtā", "Jeļena Ivanova", "Olga Iznova", "Mihails Jenbajevs", "Jeļena Jurtajeva", "Inita Karabekova", "Oksana Kartašova", "Daniels Kligulis", "Anastasija Kočmarjova", "Ilona Kokina", "Alfrēds Kokins", "Ēdvins Kovaļovs", "Igors Kovaļovs", "Alla Kozočkina", "Kristīne Krukovska", "Jeļena Krupska", "Jevģenijs Krupskis", "Ināra Kuharonoka", "Tatjana Ļebedeva", "Kirils Ļebedevs", "Dina Ļecka", "Ineta Litauniece", "Jūlija Makņa", "Anželika Mihailova", "Gaļina Minčenko", "Jevgeņijs Novajonoks", "Ludmila Ņeverova", "Jegors Ņikitins", "Diāna Ogorelova", "Sanita Onckule", "Jeļena Oreha", "Jūlija Orliņa", "Anna Ozerska", "Natālija Panteviča", "Sandris Pārpucs", "Angelika Paškeviča", "Deniss Poliščuks", "Aleksandra Pomitkina", "Oļegs Porietis", "Jekaterina Ribakova", "Ivans Rudzis", "Aleksejs Samohvalovs", "Jeļena Sardiko", "Aleksandrs Settarovs", "Dmitrijs Sirotko", "Ērika Skladova", "Rita Stepanova", "Iveta Suseja", "Grigorijs Suhovilo", "Žanna Špoģe", "Inna Titova", "Inese Šulina", "Maija Vasiļevska", "Elita Vanaģele", "Andrejs Vlasenko", "Jurijs Vībe", "Anna Vološina", "Oksana Zuboviča", "Nataļja Žemčugova", "Jūlija Žerebkova" }));
+        cmbTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTeacherActionPerformed(evt);
+            }
+        });
 
         tblGroups.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -449,12 +470,32 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         btnAddStudent1.setText("Pievienot");
+        btnAddStudent1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStudent1ActionPerformed(evt);
+            }
+        });
 
         btnClearStudent1.setText("Notīrīt");
+        btnClearStudent1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearStudent1ActionPerformed(evt);
+            }
+        });
 
         btnUpdateStudent1.setText("Labot");
+        btnUpdateStudent1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateStudent1ActionPerformed(evt);
+            }
+        });
 
         btnDeleteStudent1.setText("Dzēst");
+        btnDeleteStudent1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteStudent1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout GroupDialogLayout = new javax.swing.GroupLayout(GroupDialog.getContentPane());
         GroupDialog.getContentPane().setLayout(GroupDialogLayout);
@@ -495,7 +536,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addGroup(GroupDialogLayout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(txtGroupName, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         GroupDialogLayout.setVerticalGroup(
             GroupDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,7 +581,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         cmbStudent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cmbSubject.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSubject.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktīvā tūrisma pakalpojumi", "Automātiskās lokomotīvju signalizācijas sistēmas borta ierīču apkalpošana", "Audzināšanas stunda ar psihologu", "Algoritmēšanas un programmēšanas pamati", "Ārējo vadu un bezvadu telekomunikāciju tīklu..", "Bāra uzkodu un sagatavju gatavošana", "Biroja darba nodrošināšana", "Budžeta izstrāde un kontrolēšana", "Biznesa plāna izstrāde", "Banketa plānošana", "Biroja tehnikas apkope un remonts", "Darba tiesības", "Darba organizēšana mazumtirdzniecības vietā", "Datu bāzu programmēšana", "Datu bāzu tehnoloģijas", "Dzelzceļa elektrobarošanas līniju un ierīču remonts", "Dzelzceļa elektrobarošanas sistēmas apkalpošana", "Dzelzceļa elektrotehnisko sistēmu projektēšana un būvniecība", "Dzelzceļa kontakttīkla sistēmas apkalpošana", "Dzelzceļa kontakttīkla sistēmas remonts", "Dzelzceļa kontakttīkla sistēmas ierīču uzturēšana", "Darbs mazumtirdzniecības vietā", "Dzelzceļa nozares darbības pamatprocesi", "Dzelzceļa signalizācijas", "centralizācijas un bloķēšanas sistēmu apkalpošana", "Darbs tirdzniecības uzņēmuma noliktavā", "Datorsistēmas un datortīkli", "Dzērienu un kokteiļu gatavošana", "Dabaszinības", "Ēdināšanas uzņēmuma darbības pamatprincipi", "Ēdiena gatavošanas pamatiemaņas", "EIKT drošības politika", "EIKT drošības politikas veidošana", "Ēdienu gatavošanas tehnoloģija (2.līmenis)", "Ēdienu gatavošanas tehnoloģija (1.līmenis)", "Ēdienkartes izveide", "Svešvaloda I (B2) angļu valoda", "EIKT nozares tehnisko darbu pamatiemaņas", "Ekotūrisma pakalpojumi", "EIKT produktu izstrāde", "EIKT pamatprosesi un darbu veidi", "Elektronisko sakaru tīklu tehnoloģijas", "to ierīkošana un uzturēšana", "Elektronikas un elektrotehnikas pamati", "Fizika I", "Galda klāšanas pamati", "Grupas audzinātāja stunda", "Iniciatīva un uzņēmējdarbība (1.", "2.līmenis)", "Informācijas un komunikācijas tehnoloģijas (2.līmenis)", "Informācijas un komunikāc. tehnoloģijas (1.", "2.l.)", "Iniciatīva un uzņēmējdarbība (2.līmenis)", "Izmēģinājuma eksāmens angļu valodā", "Konditorejas izstrādājumu gatavošana (1.līmenis)", "Konditorejas izstrādājumu gatavošana (2.līmenis)", "Konditora palīga prakse", "Konferenču un semināru apkalpošana", "Konsultācija pirms PKE", "Konditora prakse", "Konsultācija pirms eksāmena", "Krēmu un desertu gatavošana 2.līmenis", "Krēmu un desertu gatavošana 1.līmenis", "Ķīmija I", "Lietišķās saskarsmes pamatprincipi", "Lietišķās sarakstes nodrošināšana un informācijas aprite", "Latviešu nacionālā un mūsdienu virtuve", "Lietotnes programmēšana", "Lietišķā saskarsme un etiķete", "Lokālo tīklu ierīkošana un uzturēšana", "Latviešu valoda I un Literatūra I", "Maizes gatavošana un cepšana (2.līmenis)", "Matemātika", "Mazumtirdzniecības darbu prakse", "Maizes gatavošana un cepšana (1.līmenis)", "Maizes gatavošanas un cepšanas pamati", "Matemātika I", "Mazumtirdzniecības komercdarbinieku prakse", "Matemātikas speciālās nodaļas", "Mazā uzņēmuma darba vadīšana", "Norēķini ar viesi", "Preču un pakalpojumu iepirkšana tūrisma un viesmīlības uzņēmumā", "Pasākumu apkalpošana", "Pārtikas produktu un izejvielu pirmapstrāde", "Paškontroles sistēmas ēdināšanas uzņēmumā", "Pavāra palīga prakse", "Personas datu aizsardzība", "Pasūtījuma ēdienu gatavošana un noformēšana", "Programmas izstrādes process", "Programmas koda rakstīšana (Kodēšana)", "Prakse komercdarbībā uzņēmumā", "Pavāra prakse", "Pārmiju pārvedu sniega tīrīšanas ierīču un kausēšanas sistēmas apkalpošana", "Prakse tūrisma un viesmīlības uzņēmumā", "Produktu un izstrādājumu uzglabāšana", "Prakse komercdarbībā uzņēmumā", "Profesionālā saziņa svešvalodās angļu val.", "Profesionālās kvalifikācijas eksāmens", "Profesionālā saziņa svešvalodās", "Profesionālā saziņa svešvalodās vācu val.", "Programmēšanas tehnoloģijas", "Programmēšanas tehniķa prakse", "Preču un pakalpojumu iepirkšana", "Preču un pakalpojumu izvēle EIKT infrastruktūras izveidei", "Preču un pakalpojumu iepirkšana tūrisma un viesmīlības uzņēmumā", "Preču un pakalpojumu pārdošana", "Preču uzskaite un dokumentēšana", "Produktu uzskaites un finanšu dokumentēšana", "Personāla vadība", "Preču zinības", "Ražošanas darba organizācija (2.līm.)", "Ražošanas darba organizācija (1.līm.)", "Ritošā sastāva tehniskā stāvokļa automātisko kontrollīdzekļu apkalpošana", "Sabiedrība un cilvēka drošība (1.", "2.līmenis)", "Lietišķa saskarsme un etiķete", "Sesijas eksāmens Matemātikas speciālās nodaļas", "Serveru izvēle un uzstādīšana", "Sociālās zinības un vēsture", "Sistēmu programmēšana", "Sports", "Stunda ar pedagogu - karjeras konsultantu", "Sociālās un pilsoniskās prasmes (2.līmenis)", "Sagatavošanās viesu uzņemšanai", "Šokolādes un cukuroto konditorejas izstrādājumu gatavošana", "Tūrisma un viesmīlības uzņēmuma darbības pamatprocesi", "Tūrisma un viesmīlības pakalpojumu un papildpakalpojumu pārdošana", "Tehnoloģiskās dokumentācijas izstrāde", "Tehnoloģiskās un uzskaites dokumentācijas izveide", "Telpu un vides sagatavošana viesu uzņemšanai", "Tirgus izpēte", "Telpu un darba vietas sagatavošana", "Tirgus un klienti", "Tīmekļa vietņu programmēšana (WEB)", "Uzņēmuma darbības pamatprocesi", "Uzņēmuma mārketinga pasākumu kompleksa izstrāde", "Uzskaites un atskaites dokumentācijas sagatavošana ēdināšanas uzņēmumā", "Uzņēmuma darbības pamatprocesi", "Uzskaites un atskaites dokumentācijas sagatavošana tūrisma un viesmīlības uzņēmumā", "Viesu apkalpošana izmitināšanas un apkalpošanas mītnēs", "Viesu mērķu grupu apkalpošana", "Viesu uzņemšanas dienesta pakalpojumu nodrošināšana", "Viesmīlības pamatprincipi tūrisma un viesmīlības uzņēmumā", "Viesu apkalpošana", "Viesu apkalpošana bārā", "Svešvaloda B1 - vācu valoda", "Vienkāršu algoritmu izstrāde", "Viesu apkalpošana izmitināšanas un apkalpošanas mītnēs", "Valodas", "kultūras izpratne un izpausmes (1.", "2.līmenis)", "Valsts aizsardzības mācība", "Viesmīlības pakalpojumu speciālista prakse", "Viesu apkalpošana izmitināšanas un apkalpošanas mītnēs", "Viesu istabu noformējums specializētiem pasūtījumiem uzņēmumā", "Valodas", "kultūras izpratne un izpausmes (2.līmenis)", "Viesu pasūtījuma izpilde", "Viesu pasūtījuma pieņemšana", "Viesu uzņemšanas dienesta pakalpojumu nodr.", "Zaļās prasmes", "Angļu valoda II", "Personāla vadība", "Budžeta izstrāde", "Trešā svešvaloda (franču val.)", "Reklāmas pakalpojumu organizēšana", "Drošības sistēmu uzstādīšana un uzturēšana", "Piloteksāmens matemātikā", "Piloteksāmens angļu valodā", "Elektronisko sakaru sistēmu lielumu mērījumi", "Dzelzceļa sakaru sistēmas apkalpošana", "Dzelzceļa sakaru sistēmu remonts", "Dzelzceļa automātikas ierīču remonts", "Dzelzceļa automātiskās sistēmas diagnosticēšana", "Dzelzceļa elektroapgādes līniju un ierīču uzturēšana", "Sesijas eksāmens Dzelzceļa automātikas ierīču remonts" }));
 
         tblGroups1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -563,12 +604,32 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         btnAddStudent2.setText("Pievienot");
+        btnAddStudent2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStudent2ActionPerformed(evt);
+            }
+        });
 
         btnClearStudent2.setText("Notīrīt");
+        btnClearStudent2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearStudent2ActionPerformed(evt);
+            }
+        });
 
         btnUpdateStudent2.setText("Labot");
+        btnUpdateStudent2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateStudent2ActionPerformed(evt);
+            }
+        });
 
         btnDeleteStudent2.setText("Dzēst");
+        btnDeleteStudent2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteStudent2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout GradeDialogLayout = new javax.swing.GroupLayout(GradeDialog.getContentPane());
         GradeDialog.getContentPane().setLayout(GradeDialogLayout);
@@ -582,29 +643,26 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addGap(76, 76, 76)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(GradeDialogLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
                         .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(GradeDialogLayout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnClearStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(GradeDialogLayout.createSequentialGroup()
+                                .addComponent(btnAddStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)
-                                .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(GradeDialogLayout.createSequentialGroup()
-                                        .addGap(74, 74, 74)
-                                        .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(btnClearStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(GradeDialogLayout.createSequentialGroup()
-                                        .addComponent(btnAddStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(btnDeleteStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(btnUpdateStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel16)
-                            .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cmbSubject, 0, 126, Short.MAX_VALUE)
-                                .addComponent(cmbStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(40, Short.MAX_VALUE))))
+                                .addComponent(btnDeleteStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(btnUpdateStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel16)
+                    .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cmbSubject, 0, 126, Short.MAX_VALUE)
+                        .addComponent(cmbStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GradeDialogLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(GradeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -868,7 +926,33 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGroupNameActionPerformed
 
     private void btnStudentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentsMouseClicked
-    MainMenuDialog.setVisible(false);
+    try {
+    javax.swing.table.DefaultTableModel model =
+            (javax.swing.table.DefaultTableModel) tblStudents.getModel();
+
+    model.setRowCount(0);
+
+    for (studentuuzskaitesistema.model.Student s
+            : new studentuuzskaitesistema.dao.StudentDAO().findAll()) {
+
+        model.addRow(new Object[]{
+            s.getId(),
+            s.getFirstName(),
+            s.getLastName(),
+            s.getPersonalCode(),
+            s.getEmail(),
+            s.getPhone(),
+            s.getGroupName()
+        });
+    }
+
+} catch (java.sql.SQLException ex) {
+    javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Neizdevās ielādēt studentus: " + ex.getMessage()
+    );
+}
+        MainMenuDialog.setVisible(false);
 
     StudentDialog.pack();
     StudentDialog.setLocationRelativeTo(null);
@@ -947,6 +1031,488 @@ public class LoginFrame extends javax.swing.JFrame {
     cmbGroup.setSelectedIndex(-1);
     tblStudents.clearSelection();
     }//GEN-LAST:event_btnClearStudentActionPerformed
+
+    private void btnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentActionPerformed
+         String firstName = txtFirstName.getText().trim();
+    String lastName = txtLastName.getText().trim();
+    String personalCode = txtPersonalCode.getText().trim();
+    String email = txtEmail.getText().trim();
+    String phone = txtPhone.getText().trim();
+
+    if (firstName.isEmpty() || lastName.isEmpty()
+            || personalCode.isEmpty()) {
+        JOptionPane.showMessageDialog(
+                StudentDialog,
+                "Ievadi vārdu, uzvārdu un personas kodu!",
+                "Kļūda",
+                JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    try {
+        studentuuzskaitesistema.dao.StudentDAO dao =
+                new studentuuzskaitesistema.dao.StudentDAO();
+
+        if (dao.personalCodeExists(personalCode)) {
+            JOptionPane.showMessageDialog(
+                    StudentDialog,
+                    "Šāds personas kods jau eksistē!",
+                    "Kļūda",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        studentuuzskaitesistema.model.Student student =
+                new studentuuzskaitesistema.model.Student();
+
+        student.setFirstName(firstName);
+        student.setLastName(lastName);
+        student.setPersonalCode(personalCode);
+        student.setEmail(email);
+        student.setPhone(phone);
+        student.setGroupId(null);
+
+        boolean added = dao.add(student);
+
+        if (added) {
+            javax.swing.table.DefaultTableModel model =
+                    (javax.swing.table.DefaultTableModel)
+                    tblStudents.getModel();
+
+            model.setRowCount(0);
+
+            for (studentuuzskaitesistema.model.Student s
+                    : dao.findAll()) {
+                model.addRow(new Object[]{
+                    s.getId(),
+                    s.getFirstName(),
+                    s.getLastName(),
+                    s.getPersonalCode(),
+                    s.getEmail(),
+                    s.getPhone(),
+                    s.getGroupName()
+                });
+            }
+
+            JOptionPane.showMessageDialog(
+                    StudentDialog,
+                    "Students veiksmīgi pievienots!"
+            );
+
+            txtFirstName.setText("");
+            txtLastName.setText("");
+            txtPersonalCode.setText("");
+            txtEmail.setText("");
+            txtPhone.setText("");
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(
+                StudentDialog,
+                "Datubāzes kļūda: " + e.getMessage(),
+                "Kļūda",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+
+    
+    }//GEN-LAST:event_btnAddStudentActionPerformed
+
+    private void btnDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStudentActionPerformed
+     int selectedRow = tblStudents.getSelectedRow();
+
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(
+                StudentDialog,
+                "Vispirms izvēlies studentu tabulā!",
+                "Brīdinājums",
+                JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    int confirm = JOptionPane.showConfirmDialog(
+            StudentDialog,
+            "Vai tiešām vēlies dzēst izvēlēto studentu?",
+            "Apstiprināt dzēšanu",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm != JOptionPane.YES_OPTION) {
+        return;
+    }
+
+    try {
+        int modelRow = tblStudents.convertRowIndexToModel(selectedRow);
+        int studentId = Integer.parseInt(
+                tblStudents.getModel().getValueAt(modelRow, 0).toString()
+        );
+
+        studentuuzskaitesistema.dao.StudentDAO dao =
+                new studentuuzskaitesistema.dao.StudentDAO();
+
+        dao.delete(studentId);
+
+        javax.swing.table.DefaultTableModel model =
+                (javax.swing.table.DefaultTableModel) tblStudents.getModel();
+
+        model.setRowCount(0);
+
+        for (studentuuzskaitesistema.model.Student s : dao.findAll()) {
+            model.addRow(new Object[]{
+                s.getId(),
+                s.getFirstName(),
+                s.getLastName(),
+                s.getPersonalCode(),
+                s.getEmail(),
+                s.getPhone(),
+                s.getGroupName()
+            });
+        }
+
+        JOptionPane.showMessageDialog(
+                StudentDialog,
+                "Students veiksmīgi izdzēsts!"
+        );
+
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtPersonalCode.setText("");
+        txtEmail.setText("");
+        txtPhone.setText("");
+        cmbGroup.setSelectedIndex(-1);
+
+    } catch (SQLException | NumberFormatException e) {
+        JOptionPane.showMessageDialog(
+                StudentDialog,
+                "Neizdevās izdzēst studentu: " + e.getMessage(),
+                "Kļūda",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+    }//GEN-LAST:event_btnDeleteStudentActionPerformed
+
+    private void btnAddStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddStudentMouseClicked
+     try {
+        studentuuzskaitesistema.dao.StudentDAO dao =
+                new studentuuzskaitesistema.dao.StudentDAO();
+
+        java.util.List<studentuuzskaitesistema.model.Student> students =
+                dao.findAll();
+
+        javax.swing.table.DefaultTableModel model =
+                (javax.swing.table.DefaultTableModel)
+                tblStudents.getModel();
+
+        model.setRowCount(0);
+
+        for (studentuuzskaitesistema.model.Student s : students) {
+            model.addRow(new Object[]{
+                s.getId(),
+                s.getFirstName(),
+                s.getLastName(),
+                s.getPersonalCode(),
+                s.getEmail(),
+                s.getPhone(),
+                s.getGroupName()
+            });
+        }
+
+    } catch (java.sql.SQLException e) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Neizdevās ielādēt studentus: " + e.getMessage(),
+                "Datubāzes kļūda",
+                JOptionPane.ERROR_MESSAGE
+        );
+        return;
+    }
+
+    MainMenuDialog.setVisible(false);
+    StudentDialog.pack();
+    StudentDialog.setLocationRelativeTo(null);
+    StudentDialog.setModal(true);
+    StudentDialog.setVisible(true);
+
+    MainMenuDialog.setLocationRelativeTo(null);
+    MainMenuDialog.setVisible(true);
+    }//GEN-LAST:event_btnAddStudentMouseClicked
+
+    private void btnDeleteStudent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStudent1ActionPerformed
+int row = tblGroups.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GroupDialog,
+                "Vispirms izvēlies grupu tabulā!"
+        );
+        return;
+    }
+
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(
+            GroupDialog,
+            "Vai tiešām vēlies dzēst izvēlēto grupu?",
+            "Grupas dzēšana",
+            javax.swing.JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm != javax.swing.JOptionPane.YES_OPTION) {
+        return;
+    }
+
+    try {
+        int groupId = Integer.parseInt(
+                tblGroups.getValueAt(row, 0).toString()
+        );
+
+        studentuuzskaitesistema.dao.GroupDAO dao =
+                new studentuuzskaitesistema.dao.GroupDAO();
+
+        if (dao.delete(groupId)) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    GroupDialog,
+                    "Grupa veiksmīgi dzēsta!"
+            );
+            txtGroupName.setText("");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    GroupDialog,
+                    "Grupu neizdevās atrast!"
+            );
+        }
+
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GroupDialog,
+                "Kļūda dzēšot grupu: " + e.getMessage()
+        );
+    }
+    }//GEN-LAST:event_btnDeleteStudent1ActionPerformed
+
+    private void btnAddStudent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudent1ActionPerformed
+  String groupName = txtGroupName.getText().trim();
+
+    if (groupName.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GroupDialog,
+                "Ievadi grupas nosaukumu!"
+        );
+        return;
+    }
+
+    try {
+        studentuuzskaitesistema.model.StudentGroup group =
+                new studentuuzskaitesistema.model.StudentGroup();
+
+        group.setName(groupName);
+        group.setCourse(
+                Integer.parseInt(cmbCourse.getSelectedItem().toString())
+        );
+        group.setTeacherId(null);
+
+        studentuuzskaitesistema.dao.GroupDAO dao =
+                new studentuuzskaitesistema.dao.GroupDAO();
+
+        if (dao.add(group)) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    GroupDialog,
+                    "Grupa veiksmīgi pievienota!"
+            );
+            txtGroupName.setText("");
+        }
+
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GroupDialog,
+                "Kļūda: " + e.getMessage()
+        );
+    }
+
+                                                
+    }//GEN-LAST:event_btnAddStudent1ActionPerformed
+
+    private void btnUpdateStudent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStudent1ActionPerformed
+       
+ int row = tblGroups.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GroupDialog,
+                "Vispirms izvēlies grupu tabulā!"
+        );
+        return;
+    }
+
+    String groupName = txtGroupName.getText().trim();
+
+    if (groupName.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GroupDialog,
+                "Ievadi grupas nosaukumu!"
+        );
+        return;
+    }
+
+    try {
+        studentuuzskaitesistema.model.StudentGroup group =
+                new studentuuzskaitesistema.model.StudentGroup();
+
+        group.setId(Integer.parseInt(
+                tblGroups.getValueAt(row, 0).toString()
+        ));
+        group.setName(groupName);
+        group.setCourse(Integer.parseInt(
+                cmbCourse.getSelectedItem().toString()
+        ));
+        group.setTeacherId(null);
+
+        studentuuzskaitesistema.dao.GroupDAO dao =
+                new studentuuzskaitesistema.dao.GroupDAO();
+
+        if (dao.update(group)) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    GroupDialog,
+                    "Grupa veiksmīgi labota!"
+            );
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    GroupDialog,
+                    "Grupu neizdevās atrast!"
+            );
+        }
+
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GroupDialog,
+                "Kļūda labojot grupu: " + e.getMessage()
+        );
+    }
+                                             
+    }//GEN-LAST:event_btnUpdateStudent1ActionPerformed
+
+    private void cmbTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTeacherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTeacherActionPerformed
+
+    private void btnClearStudent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearStudent1ActionPerformed
+       txtGroupName.setText("");
+cmbTeacher.setSelectedIndex(0);
+cmbCourse.setSelectedIndex(0);
+txtGroupName.requestFocus();
+    }//GEN-LAST:event_btnClearStudent1ActionPerformed
+
+    private void btnAddStudent2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudent2ActionPerformed
+         String gradeText = txtGrade.getText().trim();
+
+    if (cmbStudent.getSelectedIndex() == -1) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog, "Izvēlies studentu!");
+        return;
+    }
+
+    if (gradeText.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog, "Ievadi atzīmi!");
+        return;
+    }
+
+    try {
+        double gradeValue = Double.parseDouble(gradeText);
+
+        if (gradeValue < 1 || gradeValue > 10) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    GradeDialog, "Atzīmei jābūt no 1 līdz 10!");
+            return;
+        }
+
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog,
+                "Atzīme pārbaudīta! Nākamajā solī pieslēgsim saglabāšanu datubāzē."
+        );
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog, "Atzīmei jābūt skaitlim!");
+    }
+    }//GEN-LAST:event_btnAddStudent2ActionPerformed
+
+    private void btnUpdateStudent2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStudent2ActionPerformed
+        int row = tblGroups1.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog,
+                "Vispirms izvēlies atzīmi tabulā!"
+        );
+        return;
+    }
+
+    String gradeText = txtGrade.getText().trim();
+
+    if (gradeText.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog, "Ievadi atzīmi!");
+        return;
+    }
+
+    try {
+        double gradeValue = Double.parseDouble(gradeText);
+
+        if (gradeValue < 1 || gradeValue > 10) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    GradeDialog, "Atzīmei jābūt no 1 līdz 10!");
+            return;
+        }
+
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog,
+                "Atzīme pārbaudīta. Nākamajā solī pieslēgsim labošanu datubāzē."
+        );
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog, "Atzīmei jābūt skaitlim!");
+    }
+    }//GEN-LAST:event_btnUpdateStudent2ActionPerformed
+
+    private void btnDeleteStudent2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStudent2ActionPerformed
+     int row = tblGroups1.getSelectedRow();
+
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(
+                GradeDialog,
+                "Vispirms izvēlies atzīmi tabulā!"
+        );
+        return;
+    }
+
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(
+            GradeDialog,
+            "Vai tiešām vēlies dzēst izvēlēto atzīmi?",
+            "Atzīmes dzēšana",
+            javax.swing.JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm != javax.swing.JOptionPane.YES_OPTION) {
+        return;
+    }
+
+    javax.swing.JOptionPane.showMessageDialog(
+            GradeDialog,
+            "Atzīmes dzēšanai vēl jāpieslēdz datubāze."
+    );
+
+    }//GEN-LAST:event_btnDeleteStudent2ActionPerformed
+
+    private void btnClearStudent2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearStudent2ActionPerformed
+       cmbStudent.setSelectedIndex(-1);
+    cmbSubject.setSelectedIndex(-1);
+    txtGrade.setText("");
+    tblGroups1.clearSelection();
+    txtGrade.requestFocus();
+    }//GEN-LAST:event_btnClearStudent2ActionPerformed
 
     /**
      * @param args the command line arguments

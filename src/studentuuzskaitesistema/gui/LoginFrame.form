@@ -370,11 +370,60 @@
         <Component class="javax.swing.JComboBox" name="cmbGroup">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="53">
+                <StringItem index="0" value="K-11"/>
+                <StringItem index="1" value="V-11"/>
+                <StringItem index="2" value="K-21"/>
+                <StringItem index="3" value="V-21"/>
+                <StringItem index="4" value="K-31"/>
+                <StringItem index="5" value="V-31"/>
+                <StringItem index="6" value="K-41"/>
+                <StringItem index="7" value="V-41"/>
+                <StringItem index="8" value="KD-11"/>
+                <StringItem index="9" value="KD-21"/>
+                <StringItem index="10" value="KD-31"/>
+                <StringItem index="11" value="KD-41"/>
+                <StringItem index="12" value="P-11"/>
+                <StringItem index="13" value="P-21"/>
+                <StringItem index="14" value="P-31"/>
+                <StringItem index="15" value="P-41"/>
+                <StringItem index="16" value="P-41_M"/>
+                <StringItem index="17" value="PV-11"/>
+                <StringItem index="18" value="Vsm-11"/>
+                <StringItem index="19" value="PR-11"/>
+                <StringItem index="20" value="PR-21"/>
+                <StringItem index="21" value="PR-31"/>
+                <StringItem index="22" value="PR-32"/>
+                <StringItem index="23" value="ATS-31"/>
+                <StringItem index="24" value="PR-41"/>
+                <StringItem index="25" value="PR-42"/>
+                <StringItem index="26" value="ATS-41"/>
+                <StringItem index="27" value="ET-11"/>
+                <StringItem index="28" value="AE-21"/>
+                <StringItem index="29" value="AE-31"/>
+                <StringItem index="30" value="AE-41"/>
+                <StringItem index="31" value="DT-11"/>
+                <StringItem index="32" value="DT-21"/>
+                <StringItem index="33" value="DT-31"/>
+                <StringItem index="34" value="DT-41"/>
+                <StringItem index="35" value="ET-12"/>
+                <StringItem index="36" value="ET-21"/>
+                <StringItem index="37" value="ET-31"/>
+                <StringItem index="38" value="ET-41"/>
+                <StringItem index="39" value="FR-11"/>
+                <StringItem index="40" value="FR-21"/>
+                <StringItem index="41" value="FR-31"/>
+                <StringItem index="42" value="LD-11"/>
+                <StringItem index="43" value="LD-21"/>
+                <StringItem index="44" value="LD-31"/>
+                <StringItem index="45" value="LD-41"/>
+                <StringItem index="46" value="LDV-11"/>
+                <StringItem index="47" value="TS-11"/>
+                <StringItem index="48" value="TS-21"/>
+                <StringItem index="49" value="TS-31"/>
+                <StringItem index="50" value="KS-41"/>
+                <StringItem index="51" value="TS-41"/>
+                <StringItem index="52" value="ESV-11"/>
               </StringArray>
             </Property>
           </Properties>
@@ -457,6 +506,10 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Pievienot"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAddStudentMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddStudentActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnClearStudent">
           <Properties>
@@ -475,6 +528,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Dz&#x113;st"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteStudentActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -532,7 +588,7 @@
                           <Component id="txtGroupName" min="-2" pref="299" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -603,10 +659,10 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+                <StringItem index="0" value="1"/>
+                <StringItem index="1" value="2"/>
+                <StringItem index="2" value="3"/>
+                <StringItem index="3" value="4"/>
               </StringArray>
             </Property>
           </Properties>
@@ -617,14 +673,91 @@
         <Component class="javax.swing.JComboBox" name="cmbTeacher">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="78">
+                <StringItem index="0" value="Nonna Akopova"/>
+                <StringItem index="1" value="Je&#x13c;ena Aleksejeva"/>
+                <StringItem index="2" value="Ilona Antonevi&#x10d;a"/>
+                <StringItem index="3" value="Inta Baika"/>
+                <StringItem index="4" value="Inna Barkova"/>
+                <StringItem index="5" value="Olga Bazarova"/>
+                <StringItem index="6" value="Svetlana Be&#x13c;akova"/>
+                <StringItem index="7" value="Anda Bern&#x101;ne"/>
+                <StringItem index="8" value="Dmitrijs Bogdanovs"/>
+                <StringItem index="9" value="Gabriela Cimmermane"/>
+                <StringItem index="10" value="&#x17d;aneta Dalecka"/>
+                <StringItem index="11" value="An&#x17e;elika Dorofejeva"/>
+                <StringItem index="12" value="Ir&#x113;na Dorti&#x146;a"/>
+                <StringItem index="13" value="Andrejs Dorti&#x146;&#x161;"/>
+                <StringItem index="14" value="Ilze Drozdovska"/>
+                <StringItem index="15" value="Mihails Fjodorovs"/>
+                <StringItem index="16" value="Olga Gaujeniete"/>
+                <StringItem index="17" value="Aleksejs Gorbuls"/>
+                <StringItem index="18" value="Anna Gurt&#x101;"/>
+                <StringItem index="19" value="Je&#x13c;ena Ivanova"/>
+                <StringItem index="20" value="Olga Iznova"/>
+                <StringItem index="21" value="Mihails Jenbajevs"/>
+                <StringItem index="22" value="Je&#x13c;ena Jurtajeva"/>
+                <StringItem index="23" value="Inita Karabekova"/>
+                <StringItem index="24" value="Oksana Karta&#x161;ova"/>
+                <StringItem index="25" value="Daniels Kligulis"/>
+                <StringItem index="26" value="Anastasija Ko&#x10d;marjova"/>
+                <StringItem index="27" value="Ilona Kokina"/>
+                <StringItem index="28" value="Alfr&#x113;ds Kokins"/>
+                <StringItem index="29" value="&#x112;dvins Kova&#x13c;ovs"/>
+                <StringItem index="30" value="Igors Kova&#x13c;ovs"/>
+                <StringItem index="31" value="Alla Kozo&#x10d;kina"/>
+                <StringItem index="32" value="Krist&#x12b;ne Krukovska"/>
+                <StringItem index="33" value="Je&#x13c;ena Krupska"/>
+                <StringItem index="34" value="Jev&#x123;enijs Krupskis"/>
+                <StringItem index="35" value="In&#x101;ra Kuharonoka"/>
+                <StringItem index="36" value="Tatjana &#x13b;ebedeva"/>
+                <StringItem index="37" value="Kirils &#x13b;ebedevs"/>
+                <StringItem index="38" value="Dina &#x13b;ecka"/>
+                <StringItem index="39" value="Ineta Litauniece"/>
+                <StringItem index="40" value="J&#x16b;lija Mak&#x146;a"/>
+                <StringItem index="41" value="An&#x17e;elika Mihailova"/>
+                <StringItem index="42" value="Ga&#x13c;ina Min&#x10d;enko"/>
+                <StringItem index="43" value="Jevge&#x146;ijs Novajonoks"/>
+                <StringItem index="44" value="Ludmila &#x145;everova"/>
+                <StringItem index="45" value="Jegors &#x145;ikitins"/>
+                <StringItem index="46" value="Di&#x101;na Ogorelova"/>
+                <StringItem index="47" value="Sanita Onckule"/>
+                <StringItem index="48" value="Je&#x13c;ena Oreha"/>
+                <StringItem index="49" value="J&#x16b;lija Orli&#x146;a"/>
+                <StringItem index="50" value="Anna Ozerska"/>
+                <StringItem index="51" value="Nat&#x101;lija Pantevi&#x10d;a"/>
+                <StringItem index="52" value="Sandris P&#x101;rpucs"/>
+                <StringItem index="53" value="Angelika Pa&#x161;kevi&#x10d;a"/>
+                <StringItem index="54" value="Deniss Poli&#x161;&#x10d;uks"/>
+                <StringItem index="55" value="Aleksandra Pomitkina"/>
+                <StringItem index="56" value="O&#x13c;egs Porietis"/>
+                <StringItem index="57" value="Jekaterina Ribakova"/>
+                <StringItem index="58" value="Ivans Rudzis"/>
+                <StringItem index="59" value="Aleksejs Samohvalovs"/>
+                <StringItem index="60" value="Je&#x13c;ena Sardiko"/>
+                <StringItem index="61" value="Aleksandrs Settarovs"/>
+                <StringItem index="62" value="Dmitrijs Sirotko"/>
+                <StringItem index="63" value="&#x112;rika Skladova"/>
+                <StringItem index="64" value="Rita Stepanova"/>
+                <StringItem index="65" value="Iveta Suseja"/>
+                <StringItem index="66" value="Grigorijs Suhovilo"/>
+                <StringItem index="67" value="&#x17d;anna &#x160;po&#x123;e"/>
+                <StringItem index="68" value="Inna Titova"/>
+                <StringItem index="69" value="Inese &#x160;ulina"/>
+                <StringItem index="70" value="Maija Vasi&#x13c;evska"/>
+                <StringItem index="71" value="Elita Vana&#x123;ele"/>
+                <StringItem index="72" value="Andrejs Vlasenko"/>
+                <StringItem index="73" value="Jurijs V&#x12b;be"/>
+                <StringItem index="74" value="Anna Volo&#x161;ina"/>
+                <StringItem index="75" value="Oksana Zubovi&#x10d;a"/>
+                <StringItem index="76" value="Nata&#x13c;ja &#x17d;em&#x10d;ugova"/>
+                <StringItem index="77" value="J&#x16b;lija &#x17d;erebkova"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTeacherActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -686,21 +819,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Pievienot"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddStudent1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnClearStudent1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Not&#x12b;r&#x12b;t"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearStudent1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnUpdateStudent1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Labot"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateStudent1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDeleteStudent1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Dz&#x113;st"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteStudent1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -720,38 +865,33 @@
                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                           <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtGrade" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtGrade" min="-2" pref="85" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                          <Component id="btnBack2" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                          <Component id="btnClearStudent2" min="-2" pref="105" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnAddStudent2" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                          <Component id="btnDeleteStudent2" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="btnUpdateStudent2" min="-2" pref="105" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="btnBack2" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="btnClearStudent2" min="-2" pref="105" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="cmbSubject" pref="126" max="32767" attributes="0"/>
-                                  <Component id="cmbStudent" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnAddStudent2" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Component id="btnDeleteStudent2" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Component id="btnUpdateStudent2" min="-2" pref="105" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="40" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="cmbSubject" pref="126" max="32767" attributes="0"/>
+                          <Component id="cmbStudent" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -844,11 +984,183 @@
         <Component class="javax.swing.JComboBox" name="cmbSubject">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="176">
+                <StringItem index="0" value="Akt&#x12b;v&#x101; t&#x16b;risma pakalpojumi"/>
+                <StringItem index="1" value="Autom&#x101;tisk&#x101;s lokomot&#x12b;vju signaliz&#x101;cijas sist&#x113;mas borta ier&#x12b;&#x10d;u apkalpo&#x161;ana"/>
+                <StringItem index="2" value="Audzin&#x101;&#x161;anas stunda ar psihologu"/>
+                <StringItem index="3" value="Algoritm&#x113;&#x161;anas un programm&#x113;&#x161;anas pamati"/>
+                <StringItem index="4" value="&#x100;r&#x113;jo vadu un bezvadu telekomunik&#x101;ciju t&#x12b;klu.."/>
+                <StringItem index="5" value="B&#x101;ra uzkodu un sagatavju gatavo&#x161;ana"/>
+                <StringItem index="6" value="Biroja darba nodro&#x161;in&#x101;&#x161;ana"/>
+                <StringItem index="7" value="Bud&#x17e;eta izstr&#x101;de un kontrol&#x113;&#x161;ana"/>
+                <StringItem index="8" value="Biznesa pl&#x101;na izstr&#x101;de"/>
+                <StringItem index="9" value="Banketa pl&#x101;no&#x161;ana"/>
+                <StringItem index="10" value="Biroja tehnikas apkope un remonts"/>
+                <StringItem index="11" value="Darba ties&#x12b;bas"/>
+                <StringItem index="12" value="Darba organiz&#x113;&#x161;ana mazumtirdzniec&#x12b;bas viet&#x101;"/>
+                <StringItem index="13" value="Datu b&#x101;zu programm&#x113;&#x161;ana"/>
+                <StringItem index="14" value="Datu b&#x101;zu tehnolo&#x123;ijas"/>
+                <StringItem index="15" value="Dzelzce&#x13c;a elektrobaro&#x161;anas l&#x12b;niju un ier&#x12b;&#x10d;u remonts"/>
+                <StringItem index="16" value="Dzelzce&#x13c;a elektrobaro&#x161;anas sist&#x113;mas apkalpo&#x161;ana"/>
+                <StringItem index="17" value="Dzelzce&#x13c;a elektrotehnisko sist&#x113;mu projekt&#x113;&#x161;ana un b&#x16b;vniec&#x12b;ba"/>
+                <StringItem index="18" value="Dzelzce&#x13c;a kontaktt&#x12b;kla sist&#x113;mas apkalpo&#x161;ana"/>
+                <StringItem index="19" value="Dzelzce&#x13c;a kontaktt&#x12b;kla sist&#x113;mas remonts"/>
+                <StringItem index="20" value="Dzelzce&#x13c;a kontaktt&#x12b;kla sist&#x113;mas ier&#x12b;&#x10d;u uztur&#x113;&#x161;ana"/>
+                <StringItem index="21" value="Darbs mazumtirdzniec&#x12b;bas viet&#x101;"/>
+                <StringItem index="22" value="Dzelzce&#x13c;a nozares darb&#x12b;bas pamatprocesi"/>
+                <StringItem index="23" value="Dzelzce&#x13c;a signaliz&#x101;cijas"/>
+                <StringItem index="24" value="centraliz&#x101;cijas un blo&#x137;&#x113;&#x161;anas sist&#x113;mu apkalpo&#x161;ana"/>
+                <StringItem index="25" value="Darbs tirdzniec&#x12b;bas uz&#x146;&#x113;muma noliktav&#x101;"/>
+                <StringItem index="26" value="Datorsist&#x113;mas un datort&#x12b;kli"/>
+                <StringItem index="27" value="Dz&#x113;rienu un koktei&#x13c;u gatavo&#x161;ana"/>
+                <StringItem index="28" value="Dabaszin&#x12b;bas"/>
+                <StringItem index="29" value="&#x112;din&#x101;&#x161;anas uz&#x146;&#x113;muma darb&#x12b;bas pamatprincipi"/>
+                <StringItem index="30" value="&#x112;diena gatavo&#x161;anas pamatiema&#x146;as"/>
+                <StringItem index="31" value="EIKT dro&#x161;&#x12b;bas politika"/>
+                <StringItem index="32" value="EIKT dro&#x161;&#x12b;bas politikas veido&#x161;ana"/>
+                <StringItem index="33" value="&#x112;dienu gatavo&#x161;anas tehnolo&#x123;ija (2.l&#x12b;menis)"/>
+                <StringItem index="34" value="&#x112;dienu gatavo&#x161;anas tehnolo&#x123;ija (1.l&#x12b;menis)"/>
+                <StringItem index="35" value="&#x112;dienkartes izveide"/>
+                <StringItem index="36" value="Sve&#x161;valoda I (B2) ang&#x13c;u valoda"/>
+                <StringItem index="37" value="EIKT nozares tehnisko darbu pamatiema&#x146;as"/>
+                <StringItem index="38" value="Ekot&#x16b;risma pakalpojumi"/>
+                <StringItem index="39" value="EIKT produktu izstr&#x101;de"/>
+                <StringItem index="40" value="EIKT pamatprosesi un darbu veidi"/>
+                <StringItem index="41" value="Elektronisko sakaru t&#x12b;klu tehnolo&#x123;ijas"/>
+                <StringItem index="42" value="to ier&#x12b;ko&#x161;ana un uztur&#x113;&#x161;ana"/>
+                <StringItem index="43" value="Elektronikas un elektrotehnikas pamati"/>
+                <StringItem index="44" value="Fizika I"/>
+                <StringItem index="45" value="Galda kl&#x101;&#x161;anas pamati"/>
+                <StringItem index="46" value="Grupas audzin&#x101;t&#x101;ja stunda"/>
+                <StringItem index="47" value="Iniciat&#x12b;va un uz&#x146;&#x113;m&#x113;jdarb&#x12b;ba (1."/>
+                <StringItem index="48" value="2.l&#x12b;menis)"/>
+                <StringItem index="49" value="Inform&#x101;cijas un komunik&#x101;cijas tehnolo&#x123;ijas (2.l&#x12b;menis)"/>
+                <StringItem index="50" value="Inform&#x101;cijas un komunik&#x101;c. tehnolo&#x123;ijas (1."/>
+                <StringItem index="51" value="2.l.)"/>
+                <StringItem index="52" value="Iniciat&#x12b;va un uz&#x146;&#x113;m&#x113;jdarb&#x12b;ba (2.l&#x12b;menis)"/>
+                <StringItem index="53" value="Izm&#x113;&#x123;in&#x101;juma eks&#x101;mens ang&#x13c;u valod&#x101;"/>
+                <StringItem index="54" value="Konditorejas izstr&#x101;d&#x101;jumu gatavo&#x161;ana (1.l&#x12b;menis)"/>
+                <StringItem index="55" value="Konditorejas izstr&#x101;d&#x101;jumu gatavo&#x161;ana (2.l&#x12b;menis)"/>
+                <StringItem index="56" value="Konditora pal&#x12b;ga prakse"/>
+                <StringItem index="57" value="Konferen&#x10d;u un semin&#x101;ru apkalpo&#x161;ana"/>
+                <StringItem index="58" value="Konsult&#x101;cija pirms PKE"/>
+                <StringItem index="59" value="Konditora prakse"/>
+                <StringItem index="60" value="Konsult&#x101;cija pirms eks&#x101;mena"/>
+                <StringItem index="61" value="Kr&#x113;mu un desertu gatavo&#x161;ana 2.l&#x12b;menis"/>
+                <StringItem index="62" value="Kr&#x113;mu un desertu gatavo&#x161;ana 1.l&#x12b;menis"/>
+                <StringItem index="63" value="&#x136;&#x12b;mija I"/>
+                <StringItem index="64" value="Lieti&#x161;&#x137;&#x101;s saskarsmes pamatprincipi"/>
+                <StringItem index="65" value="Lieti&#x161;&#x137;&#x101;s sarakstes nodro&#x161;in&#x101;&#x161;ana un inform&#x101;cijas aprite"/>
+                <StringItem index="66" value="Latvie&#x161;u nacion&#x101;l&#x101; un m&#x16b;sdienu virtuve"/>
+                <StringItem index="67" value="Lietotnes programm&#x113;&#x161;ana"/>
+                <StringItem index="68" value="Lieti&#x161;&#x137;&#x101; saskarsme un eti&#x137;ete"/>
+                <StringItem index="69" value="Lok&#x101;lo t&#x12b;klu ier&#x12b;ko&#x161;ana un uztur&#x113;&#x161;ana"/>
+                <StringItem index="70" value="Latvie&#x161;u valoda I un Literat&#x16b;ra I"/>
+                <StringItem index="71" value="Maizes gatavo&#x161;ana un cep&#x161;ana (2.l&#x12b;menis)"/>
+                <StringItem index="72" value="Matem&#x101;tika"/>
+                <StringItem index="73" value="Mazumtirdzniec&#x12b;bas darbu prakse"/>
+                <StringItem index="74" value="Maizes gatavo&#x161;ana un cep&#x161;ana (1.l&#x12b;menis)"/>
+                <StringItem index="75" value="Maizes gatavo&#x161;anas un cep&#x161;anas pamati"/>
+                <StringItem index="76" value="Matem&#x101;tika I"/>
+                <StringItem index="77" value="Mazumtirdzniec&#x12b;bas komercdarbinieku prakse"/>
+                <StringItem index="78" value="Matem&#x101;tikas speci&#x101;l&#x101;s noda&#x13c;as"/>
+                <StringItem index="79" value="Maz&#x101; uz&#x146;&#x113;muma darba vad&#x12b;&#x161;ana"/>
+                <StringItem index="80" value="Nor&#x113;&#x137;ini ar viesi"/>
+                <StringItem index="81" value="Pre&#x10d;u un pakalpojumu iepirk&#x161;ana t&#x16b;risma un viesm&#x12b;l&#x12b;bas uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="82" value="Pas&#x101;kumu apkalpo&#x161;ana"/>
+                <StringItem index="83" value="P&#x101;rtikas produktu un izejvielu pirmapstr&#x101;de"/>
+                <StringItem index="84" value="Pa&#x161;kontroles sist&#x113;mas &#x113;din&#x101;&#x161;anas uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="85" value="Pav&#x101;ra pal&#x12b;ga prakse"/>
+                <StringItem index="86" value="Personas datu aizsardz&#x12b;ba"/>
+                <StringItem index="87" value="Pas&#x16b;t&#x12b;juma &#x113;dienu gatavo&#x161;ana un noform&#x113;&#x161;ana"/>
+                <StringItem index="88" value="Programmas izstr&#x101;des process"/>
+                <StringItem index="89" value="Programmas koda rakst&#x12b;&#x161;ana (Kod&#x113;&#x161;ana)"/>
+                <StringItem index="90" value="Prakse komercdarb&#x12b;b&#x101; uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="91" value="Pav&#x101;ra prakse"/>
+                <StringItem index="92" value="P&#x101;rmiju p&#x101;rvedu sniega t&#x12b;r&#x12b;&#x161;anas ier&#x12b;&#x10d;u un kaus&#x113;&#x161;anas sist&#x113;mas apkalpo&#x161;ana"/>
+                <StringItem index="93" value="Prakse t&#x16b;risma un viesm&#x12b;l&#x12b;bas uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="94" value="Produktu un izstr&#x101;d&#x101;jumu uzglab&#x101;&#x161;ana"/>
+                <StringItem index="95" value="Prakse komercdarb&#x12b;b&#x101; uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="96" value="Profesion&#x101;l&#x101; sazi&#x146;a sve&#x161;valod&#x101;s ang&#x13c;u val."/>
+                <StringItem index="97" value="Profesion&#x101;l&#x101;s kvalifik&#x101;cijas eks&#x101;mens"/>
+                <StringItem index="98" value="Profesion&#x101;l&#x101; sazi&#x146;a sve&#x161;valod&#x101;s"/>
+                <StringItem index="99" value="Profesion&#x101;l&#x101; sazi&#x146;a sve&#x161;valod&#x101;s v&#x101;cu val."/>
+                <StringItem index="100" value="Programm&#x113;&#x161;anas tehnolo&#x123;ijas"/>
+                <StringItem index="101" value="Programm&#x113;&#x161;anas tehni&#x137;a prakse"/>
+                <StringItem index="102" value="Pre&#x10d;u un pakalpojumu iepirk&#x161;ana"/>
+                <StringItem index="103" value="Pre&#x10d;u un pakalpojumu izv&#x113;le EIKT infrastrukt&#x16b;ras izveidei"/>
+                <StringItem index="104" value="Pre&#x10d;u un pakalpojumu iepirk&#x161;ana t&#x16b;risma un viesm&#x12b;l&#x12b;bas uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="105" value="Pre&#x10d;u un pakalpojumu p&#x101;rdo&#x161;ana"/>
+                <StringItem index="106" value="Pre&#x10d;u uzskaite un dokument&#x113;&#x161;ana"/>
+                <StringItem index="107" value="Produktu uzskaites un finan&#x161;u dokument&#x113;&#x161;ana"/>
+                <StringItem index="108" value="Person&#x101;la vad&#x12b;ba"/>
+                <StringItem index="109" value="Pre&#x10d;u zin&#x12b;bas"/>
+                <StringItem index="110" value="Ra&#x17e;o&#x161;anas darba organiz&#x101;cija (2.l&#x12b;m.)"/>
+                <StringItem index="111" value="Ra&#x17e;o&#x161;anas darba organiz&#x101;cija (1.l&#x12b;m.)"/>
+                <StringItem index="112" value="Rito&#x161;&#x101; sast&#x101;va tehnisk&#x101; st&#x101;vok&#x13c;a autom&#x101;tisko kontroll&#x12b;dzek&#x13c;u apkalpo&#x161;ana"/>
+                <StringItem index="113" value="Sabiedr&#x12b;ba un cilv&#x113;ka dro&#x161;&#x12b;ba (1."/>
+                <StringItem index="114" value="2.l&#x12b;menis)"/>
+                <StringItem index="115" value="Lieti&#x161;&#x137;a saskarsme un eti&#x137;ete"/>
+                <StringItem index="116" value="Sesijas eks&#x101;mens Matem&#x101;tikas speci&#x101;l&#x101;s noda&#x13c;as"/>
+                <StringItem index="117" value="Serveru izv&#x113;le un uzst&#x101;d&#x12b;&#x161;ana"/>
+                <StringItem index="118" value="Soci&#x101;l&#x101;s zin&#x12b;bas un v&#x113;sture"/>
+                <StringItem index="119" value="Sist&#x113;mu programm&#x113;&#x161;ana"/>
+                <StringItem index="120" value="Sports"/>
+                <StringItem index="121" value="Stunda ar pedagogu - karjeras konsultantu"/>
+                <StringItem index="122" value="Soci&#x101;l&#x101;s un pilsonisk&#x101;s prasmes (2.l&#x12b;menis)"/>
+                <StringItem index="123" value="Sagatavo&#x161;an&#x101;s viesu uz&#x146;em&#x161;anai"/>
+                <StringItem index="124" value="&#x160;okol&#x101;des un cukuroto konditorejas izstr&#x101;d&#x101;jumu gatavo&#x161;ana"/>
+                <StringItem index="125" value="T&#x16b;risma un viesm&#x12b;l&#x12b;bas uz&#x146;&#x113;muma darb&#x12b;bas pamatprocesi"/>
+                <StringItem index="126" value="T&#x16b;risma un viesm&#x12b;l&#x12b;bas pakalpojumu un papildpakalpojumu p&#x101;rdo&#x161;ana"/>
+                <StringItem index="127" value="Tehnolo&#x123;isk&#x101;s dokument&#x101;cijas izstr&#x101;de"/>
+                <StringItem index="128" value="Tehnolo&#x123;isk&#x101;s un uzskaites dokument&#x101;cijas izveide"/>
+                <StringItem index="129" value="Telpu un vides sagatavo&#x161;ana viesu uz&#x146;em&#x161;anai"/>
+                <StringItem index="130" value="Tirgus izp&#x113;te"/>
+                <StringItem index="131" value="Telpu un darba vietas sagatavo&#x161;ana"/>
+                <StringItem index="132" value="Tirgus un klienti"/>
+                <StringItem index="133" value="T&#x12b;mek&#x13c;a viet&#x146;u programm&#x113;&#x161;ana (WEB)"/>
+                <StringItem index="134" value="Uz&#x146;&#x113;muma darb&#x12b;bas pamatprocesi"/>
+                <StringItem index="135" value="Uz&#x146;&#x113;muma m&#x101;rketinga pas&#x101;kumu kompleksa izstr&#x101;de"/>
+                <StringItem index="136" value="Uzskaites un atskaites dokument&#x101;cijas sagatavo&#x161;ana &#x113;din&#x101;&#x161;anas uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="137" value="Uz&#x146;&#x113;muma darb&#x12b;bas pamatprocesi"/>
+                <StringItem index="138" value="Uzskaites un atskaites dokument&#x101;cijas sagatavo&#x161;ana t&#x16b;risma un viesm&#x12b;l&#x12b;bas uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="139" value="Viesu apkalpo&#x161;ana izmitin&#x101;&#x161;anas un apkalpo&#x161;anas m&#x12b;tn&#x113;s"/>
+                <StringItem index="140" value="Viesu m&#x113;r&#x137;u grupu apkalpo&#x161;ana"/>
+                <StringItem index="141" value="Viesu uz&#x146;em&#x161;anas dienesta pakalpojumu nodro&#x161;in&#x101;&#x161;ana"/>
+                <StringItem index="142" value="Viesm&#x12b;l&#x12b;bas pamatprincipi t&#x16b;risma un viesm&#x12b;l&#x12b;bas uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="143" value="Viesu apkalpo&#x161;ana"/>
+                <StringItem index="144" value="Viesu apkalpo&#x161;ana b&#x101;r&#x101;"/>
+                <StringItem index="145" value="Sve&#x161;valoda B1 - v&#x101;cu valoda"/>
+                <StringItem index="146" value="Vienk&#x101;r&#x161;u algoritmu izstr&#x101;de"/>
+                <StringItem index="147" value="Viesu apkalpo&#x161;ana izmitin&#x101;&#x161;anas un apkalpo&#x161;anas m&#x12b;tn&#x113;s"/>
+                <StringItem index="148" value="Valodas"/>
+                <StringItem index="149" value="kult&#x16b;ras izpratne un izpausmes (1."/>
+                <StringItem index="150" value="2.l&#x12b;menis)"/>
+                <StringItem index="151" value="Valsts aizsardz&#x12b;bas m&#x101;c&#x12b;ba"/>
+                <StringItem index="152" value="Viesm&#x12b;l&#x12b;bas pakalpojumu speci&#x101;lista prakse"/>
+                <StringItem index="153" value="Viesu apkalpo&#x161;ana izmitin&#x101;&#x161;anas un apkalpo&#x161;anas m&#x12b;tn&#x113;s"/>
+                <StringItem index="154" value="Viesu istabu noform&#x113;jums specializ&#x113;tiem pas&#x16b;t&#x12b;jumiem uz&#x146;&#x113;mum&#x101;"/>
+                <StringItem index="155" value="Valodas"/>
+                <StringItem index="156" value="kult&#x16b;ras izpratne un izpausmes (2.l&#x12b;menis)"/>
+                <StringItem index="157" value="Viesu pas&#x16b;t&#x12b;juma izpilde"/>
+                <StringItem index="158" value="Viesu pas&#x16b;t&#x12b;juma pie&#x146;em&#x161;ana"/>
+                <StringItem index="159" value="Viesu uz&#x146;em&#x161;anas dienesta pakalpojumu nodr."/>
+                <StringItem index="160" value="Za&#x13c;&#x101;s prasmes"/>
+                <StringItem index="161" value="Ang&#x13c;u valoda II"/>
+                <StringItem index="162" value="Person&#x101;la vad&#x12b;ba"/>
+                <StringItem index="163" value="Bud&#x17e;eta izstr&#x101;de"/>
+                <StringItem index="164" value="Tre&#x161;&#x101; sve&#x161;valoda (fran&#x10d;u val.)"/>
+                <StringItem index="165" value="Rekl&#x101;mas pakalpojumu organiz&#x113;&#x161;ana"/>
+                <StringItem index="166" value="Dro&#x161;&#x12b;bas sist&#x113;mu uzst&#x101;d&#x12b;&#x161;ana un uztur&#x113;&#x161;ana"/>
+                <StringItem index="167" value="Piloteks&#x101;mens matem&#x101;tik&#x101;"/>
+                <StringItem index="168" value="Piloteks&#x101;mens ang&#x13c;u valod&#x101;"/>
+                <StringItem index="169" value="Elektronisko sakaru sist&#x113;mu lielumu m&#x113;r&#x12b;jumi"/>
+                <StringItem index="170" value="Dzelzce&#x13c;a sakaru sist&#x113;mas apkalpo&#x161;ana"/>
+                <StringItem index="171" value="Dzelzce&#x13c;a sakaru sist&#x113;mu remonts"/>
+                <StringItem index="172" value="Dzelzce&#x13c;a autom&#x101;tikas ier&#x12b;&#x10d;u remonts"/>
+                <StringItem index="173" value="Dzelzce&#x13c;a autom&#x101;tisk&#x101;s sist&#x113;mas diagnostic&#x113;&#x161;ana"/>
+                <StringItem index="174" value="Dzelzce&#x13c;a elektroapg&#x101;des l&#x12b;niju un ier&#x12b;&#x10d;u uztur&#x113;&#x161;ana"/>
+                <StringItem index="175" value="Sesijas eks&#x101;mens Dzelzce&#x13c;a autom&#x101;tikas ier&#x12b;&#x10d;u remonts"/>
               </StringArray>
             </Property>
           </Properties>
@@ -921,21 +1233,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Pievienot"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddStudent2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnClearStudent2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Not&#x12b;r&#x12b;t"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearStudent2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnUpdateStudent2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Labot"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateStudent2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDeleteStudent2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Dz&#x113;st"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteStudent2ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
