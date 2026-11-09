@@ -3,44 +3,49 @@ package studentuuzskaitesistema.util;
 import studentuuzskaitesistema.model.User;
 
 /**
- * Glabā pašlaik pieteikušos lietotāju (sesijas dati).
+ * Glabā informāciju par pašreizējo pieslēgto lietotāju.
  */
 public class Session {
 
     private static User currentUser;
 
     private Session() {
+        // Neļauj izveidot šīs klases objektus.
     }
 
-    /**
-     * Iestata pašreizējo lietotāju pēc pieteikšanās.
-     *
-     * @param user pieteikušais lietotājs
-     */
     public static void login(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("Lietotājs nevar būt null!");
+        }
+
         currentUser = user;
     }
 
-    /** Izbeidz sesiju (atteikšanās). */
     public static void logout() {
         currentUser = null;
     }
 
-    /**
-     * Atgriež pašreizējo lietotāju.
-     *
-     * @return pieteikušais lietotājs vai null
-     */
     public static User getCurrentUser() {
         return currentUser;
     }
 
-    /**
-     * Pārbauda, vai pieteicies lietvedis (administrators).
-     *
-     * @return true, ja lietotāja loma ir ADMIN
-     */
+    public static boolean isLoggedIn() {
+        return currentUser != null;
+    }
+
     public static boolean isAdmin() {
-        return currentUser != null && "ADMIN".equals(currentUser.getRole());
+        return currentUser != null
+                && "ADMIN".equalsIgnoreCase(currentUser.getRole());
+    }
+
+    public static boolean isTeacher() {
+        return currentUser != null
+                && "TEACHER".equalsIgnoreCase(currentUser.getRole());
+    }
+
+    public static boolean hasRole(String role) {
+        return currentUser != null
+                && role != null
+                && role.equalsIgnoreCase(currentUser.getRole());
     }
 }
