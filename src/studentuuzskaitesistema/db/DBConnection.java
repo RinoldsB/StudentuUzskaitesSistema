@@ -1,14 +1,19 @@
-
 package studentuuzskaitesistema.db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import studentuuzskaitesistema.util.PasswordUtil;
 
+/**
+ * Nodrošina savienojumu ar Apache Derby (Embedded) datu bāzi,
+ * izveido tabulas un aizpilda sākuma datus pirmajā palaišanas reizē.
+ */
 public class DBConnection {
 
     private static final String DB_URL =
@@ -17,10 +22,22 @@ public class DBConnection {
     private DBConnection() {
     }
 
+    /**
+     * Atver un atgriež jaunu JDBC savienojumu ar Apache Derby datu bāzi.
+     *
+     * @return aktīvs {@link Connection} objekts
+     * @throws SQLException ja savienojumu neizdodas izveidot
+     */
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL);
     }
 
+    /**
+     * Izveido datu bāzes tabulas (USERS, STUDENT_GROUPS, STUDENTS, GRADES),
+     * ja tās vēl neeksistē, un ievieto sākuma datus.
+     *
+     * @throws SQLException ja tabulu vai sākuma datu izveide neizdodas
+     */
     public static void initialize() throws SQLException {
         try (Connection con = getConnection()) {
             createTableIfMissing(con, "USERS",
@@ -28,10 +45,11 @@ public class DBConnection {
                 + "id INT NOT NULL GENERATED ALWAYS AS IDENTITY "
                 + "(START WITH 1, INCREMENT BY 1), "
                 + "username VARCHAR(50) NOT NULL UNIQUE, "
-                + "password_hash VARCHAR(64) NOT NULL, "
+                + "password_hash VARCHAR(255) NOT NULL, "
                 + "full_name VARCHAR(100) NOT NULL, "
                 + "role VARCHAR(20) NOT NULL, "
                 + "CONSTRAINT PK_USERS PRIMARY KEY (id))");
+            ensurePasswordHashColumnLength(con);
 
             createTableIfMissing(con, "STUDENT_GROUPS",
                 "CREATE TABLE STUDENT_GROUPS ("
@@ -95,6 +113,16 @@ public class DBConnection {
         }
     }
 
+    private static void ensurePasswordHashColumnLength(Connection con) throws SQLException {
+        try (ResultSet rs = con.getMetaData().getColumns(null, "APP", "USERS", "PASSWORD_HASH")) {
+            if (rs.next() && rs.getInt("COLUMN_SIZE") < 255) {
+                try (Statement st = con.createStatement()) {
+                    st.executeUpdate("ALTER TABLE USERS ALTER COLUMN password_hash SET DATA TYPE VARCHAR(255)");
+                }
+            }
+        }
+    }
+
     private static void insertInitialData(Connection con)
             throws SQLException {
 
@@ -104,21 +132,17 @@ public class DBConnection {
         insertUserIfMissing(con, "pasniedzejs", "teacher123",
                 "Jānis Bērziņš", "TEACHER");
 
-        insertGroupIfMissing(con, "PR-31", 1);
-        insertGroupIfMissing(con, "PR-32", 2);
-        insertGroupIfMissing(con, "PR-33", 3);
+        removeLegacyExamples(con);
+    }
 
-        insertStudentIfMissing(con, "Anna", "Ozola",
-                "010101-12345", "anna@example.com",
-                "20000001", "PR-31");
-
-        insertStudentIfMissing(con, "Mārtiņš", "Bērziņš",
-                "020202-12345", "martins@example.com",
-                "20000002", "PR-32");
-
-        insertStudentIfMissing(con, "Laura", "Kalniņa",
-                "030303-12345", "laura@example.com",
-                "20000003", "PR-33");
+    /**
+     * Izdzēš iepriekšējos piemēra studentus (Anna Ozola, Mārtiņš Bērziņš, Laura Kalniņa)
+     * un viņu piemēra atzīmes, lai datu bāzē glabātos tikai lietotāja pievienotie ieraksti.
+     */
+    private static void removeLegacyExamples(Connection con) throws SQLException {
+        try (Statement st = con.createStatement()) {
+            st.executeUpdate("DELETE FROM STUDENTS WHERE personal_code IN ('010101-12345', '020202-12345', '030303-12345')");
+        }
     }
 
     private static void insertUserIfMissing(
@@ -126,11 +150,20 @@ public class DBConnection {
             String fullName, String role) throws SQLException {
 
         try (PreparedStatement check = con.prepareStatement(
-                "SELECT 1 FROM USERS WHERE username = ?")) {
+                "SELECT id, password_hash FROM USERS WHERE username = ?")) {
             check.setString(1, username);
 
             try (ResultSet rs = check.executeQuery()) {
                 if (rs.next()) {
+                    String existingHash = rs.getString("password_hash");
+                    if (!PasswordUtil.verify(password, existingHash)) {
+                        try (PreparedStatement upd = con.prepareStatement(
+                                "UPDATE USERS SET password_hash = ? WHERE id = ?")) {
+                            upd.setString(1, PasswordUtil.hash(password));
+                            upd.setInt(2, rs.getInt("id"));
+                            upd.executeUpdate();
+                        }
+                    }
                     return;
                 }
             }
@@ -144,101 +177,6 @@ public class DBConnection {
             ps.setString(2, PasswordUtil.hash(password));
             ps.setString(3, fullName);
             ps.setString(4, role);
-            ps.executeUpdate();
-        }
-    }
-
-    private static void insertGroupIfMissing(
-            Connection con, String name, int course)
-            throws SQLException {
-
-        try (PreparedStatement check = con.prepareStatement(
-                "SELECT 1 FROM STUDENT_GROUPS WHERE name = ?")) {
-            check.setString(1, name);
-
-            try (ResultSet rs = check.executeQuery()) {
-                if (rs.next()) {
-                    return;
-                }
-            }
-        }
-
-        Integer teacherId = findUserId(con, "pasniedzejs");
-
-        try (PreparedStatement ps = con.prepareStatement(
-                "INSERT INTO STUDENT_GROUPS (name, course, teacher_id) "
-                + "VALUES (?, ?, ?)")) {
-            ps.setString(1, name);
-            ps.setInt(2, course);
-
-            if (teacherId == null) {
-                ps.setNull(3, java.sql.Types.INTEGER);
-            } else {
-                ps.setInt(3, teacherId);
-            }
-
-            ps.executeUpdate();
-        }
-    }
-
-    private static Integer findUserId(
-            Connection con, String username) throws SQLException {
-
-        try (PreparedStatement ps = con.prepareStatement(
-                "SELECT id FROM USERS WHERE username = ?")) {
-            ps.setString(1, username);
-
-            try (ResultSet rs = ps.executeQuery()) {
-                return rs.next() ? rs.getInt("id") : null;
-            }
-        }
-    }
-
-    private static void insertStudentIfMissing(
-            Connection con, String firstName, String lastName,
-            String personalCode, String email, String phone,
-            String groupName) throws SQLException {
-
-        try (PreparedStatement check = con.prepareStatement(
-                "SELECT 1 FROM STUDENTS WHERE personal_code = ?")) {
-            check.setString(1, personalCode);
-
-            try (ResultSet rs = check.executeQuery()) {
-                if (rs.next()) {
-                    return;
-                }
-            }
-        }
-
-        Integer groupId = null;
-
-        try (PreparedStatement ps = con.prepareStatement(
-                "SELECT id FROM STUDENT_GROUPS WHERE name = ?")) {
-            ps.setString(1, groupName);
-
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    groupId = rs.getInt("id");
-                }
-            }
-        }
-
-        try (PreparedStatement ps = con.prepareStatement(
-                "INSERT INTO STUDENTS "
-                + "(first_name, last_name, personal_code, email, phone, group_id) "
-                + "VALUES (?, ?, ?, ?, ?, ?)")) {
-            ps.setString(1, firstName);
-            ps.setString(2, lastName);
-            ps.setString(3, personalCode);
-            ps.setString(4, email);
-            ps.setString(5, phone);
-
-            if (groupId == null) {
-                ps.setNull(6, java.sql.Types.INTEGER);
-            } else {
-                ps.setInt(6, groupId);
-            }
-
             ps.executeUpdate();
         }
     }

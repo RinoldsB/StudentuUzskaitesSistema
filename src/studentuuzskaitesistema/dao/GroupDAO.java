@@ -39,6 +39,105 @@ public class GroupDAO {
     }
 
     /**
+     * Atrod grupas ID pēc nosaukuma vai izveido jaunu grupu datu bāzē, ja tāda vēl neeksistē.
+     *
+     * @param name grupas nosaukums
+     * @return grupas ID datu bāzē vai {@code null}, ja nosaukums ir tukšs
+     * @throws SQLException datu bāzes kļūda
+     */
+    public Integer findOrCreateByName(String name) throws SQLException {
+        if (name == null || name.trim().isEmpty() || "-".equals(name.trim())) {
+            return null;
+        }
+        String trimmed = name.trim();
+        try (Connection c = DBConnection.getConnection()) {
+            try (PreparedStatement ps = c.prepareStatement(
+                    "SELECT id FROM STUDENT_GROUPS WHERE UPPER(name) = UPPER(?)")) {
+                ps.setString(1, trimmed);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        return rs.getInt("id");
+                    }
+                }
+            }
+            int course = 1;
+            java.util.regex.Matcher m = java.util.regex.Pattern.compile("-(\\d)").matcher(trimmed);
+            if (m.find()) {
+                int parsed = Integer.parseInt(m.group(1));
+                if (parsed >= 1 && parsed <= 6) {
+                    course = parsed;
+                }
+            }
+            try (PreparedStatement ins = c.prepareStatement(
+                    "INSERT INTO STUDENT_GROUPS (name, course, teacher_id) VALUES (?, ?, NULL)",
+                    PreparedStatement.RETURN_GENERATED_KEYS)) {
+                ins.setString(1, trimmed);
+                ins.setInt(2, course);
+                ins.executeUpdate();
+                try (ResultSet keys = ins.getGeneratedKeys()) {
+                    if (keys.next()) {
+                        return keys.getInt(1);
+                    }
+                }
+            }
+            try (PreparedStatement ps = c.prepareStatement(
+                    "SELECT id FROM STUDENT_GROUPS WHERE UPPER(name) = UPPER(?)")) {
+                ps.setString(1, trimmed);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        return rs.getInt("id");
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Pārbauda, vai grupa ar šādu nosaukumu jau eksistē (reģistrnejutīgi).
+     *
+     * @param name grupas nosaukums
+     * @return {@code true}, ja grupa jau eksistē
+     * @throws SQLException datu bāzes kļūda
+     */
+    public boolean nameExists(String name) throws SQLException {
+        if (name == null || name.trim().isEmpty()) {
+            return false;
+        }
+        String sql = "SELECT 1 FROM STUDENT_GROUPS WHERE UPPER(name) = UPPER(?)";
+        try (Connection c = DBConnection.getConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, name.trim());
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
+
+    /**
+     * Pārbauda, vai citai grupai jau ir šāds nosaukums.
+     *
+     * @param name grupas nosaukums
+     * @param excludeId pašreizējās grupas ID
+     * @return {@code true}, ja citai grupai jau ir šāds nosaukums
+     * @throws SQLException datu bāzes kļūda
+     */
+    public boolean nameExistsForOther(String name, int excludeId) throws SQLException {
+        if (name == null || name.trim().isEmpty()) {
+            return false;
+        }
+        String sql = "SELECT 1 FROM STUDENT_GROUPS WHERE UPPER(name) = UPPER(?) AND id <> ?";
+        try (Connection c = DBConnection.getConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, name.trim());
+            ps.setInt(2, excludeId);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
+
+    /**
      * Pievieno jaunu grupu.
      *
      * @param g grupa (id netiek izmantots)

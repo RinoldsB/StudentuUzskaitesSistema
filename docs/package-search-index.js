@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"studentuuzskaitesistema.dao"},{"l":"studentuuzskaitesistema.db"},{"l":"studentuuzskaitesistema.gui"},{"l":"studentuuzskaitesistema.model"},{"l":"studentuuzskaitesistema.util"}]

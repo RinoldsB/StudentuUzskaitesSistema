@@ -1,4 +1,10 @@
+# NetBeans / Ant build output
 build/
 dist/
 nbproject/private/
 *.class
+
+# Apache Derby datubāze un žurnāls (tiek izveidota automātiski pirmajā palaišanā)
+StudentuUzskaitesDB/
+StudentuDB/
+derby.log

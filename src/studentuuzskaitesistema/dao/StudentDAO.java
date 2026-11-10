@@ -11,7 +11,7 @@ import studentuuzskaitesistema.db.DBConnection;
 import studentuuzskaitesistema.model.Student;
 
 /**
- * Datu piekļuve tabulai STUDENTS (CRUD, meklēšana, filtrēšana).
+ * Datu piekļuve tabulai STUDENTS (CRUD, meklēšana, filtrēšana pēc grupas un pasniedzēja).
  */
 public class StudentDAO {
 
@@ -83,7 +83,7 @@ public class StudentDAO {
     }
 
     /**
-     * Dzēš studentu (kopā ar viņa sekmēm).
+     * Dzēš studentu (kopā ar viņa sekmēm ON DELETE CASCADE).
      *
      * @param id studenta id
      * @return true, ja dzēsts
@@ -104,7 +104,18 @@ public class StudentDAO {
      * @throws SQLException datu bāzes kļūda
      */
     public List<Student> findAll() throws SQLException {
-        return search(null, null);
+        return search(null, null, null);
+    }
+
+    /**
+     * Atgriež studentus, kuri pieder konkrētajam pasniedzējam piešķirtajām grupām.
+     *
+     * @param teacherId pasniedzēja lietotāja id
+     * @return pasniedzēja grupu studentu saraksts
+     * @throws SQLException datu bāzes kļūda
+     */
+    public List<Student> findByTeacher(int teacherId) throws SQLException {
+        return search(null, null, teacherId);
     }
 
     /**
@@ -125,21 +136,37 @@ public class StudentDAO {
     }
 
     /**
-     * Meklē studentus pēc vārda/uzvārda fragmenta un/vai grupas.
+     * Meklē studentus pēc vārda/uzvārda/personas koda fragmenta un/vai grupas.
      *
-     * @param text meklējamais teksts vārdā vai uzvārdā (null vai tukšs = bez filtra)
+     * @param text meklējamais teksts (null vai tukšs = bez filtra)
      * @param groupId grupas id (null = visas grupas)
      * @return atrasto studentu saraksts
      * @throws SQLException datu bāzes kļūda
      */
     public List<Student> search(String text, Integer groupId) throws SQLException {
+        return search(text, groupId, null);
+    }
+
+    /**
+     * Meklē studentus pēc vārda/uzvārda/personas koda fragmenta, grupas un/vai pasniedzēja.
+     *
+     * @param text meklējamais teksts vārdā, uzvārdā vai personas kodā (null vai tukšs = bez filtra)
+     * @param groupId grupas id (null = visas grupas)
+     * @param teacherId pasniedzēja id (null = visi pasniedzēji / administrators)
+     * @return atrasto studentu saraksts
+     * @throws SQLException datu bāzes kļūda
+     */
+    public List<Student> search(String text, Integer groupId, Integer teacherId) throws SQLException {
         StringBuilder sql = new StringBuilder(SELECT_BASE).append("WHERE 1=1 ");
         boolean hasText = text != null && !text.trim().isEmpty();
         if (hasText) {
-            sql.append("AND (LOWER(s.first_name) LIKE ? OR LOWER(s.last_name) LIKE ?) ");
+            sql.append("AND (LOWER(s.first_name) LIKE ? OR LOWER(s.last_name) LIKE ? OR LOWER(s.personal_code) LIKE ?) ");
         }
         if (groupId != null) {
             sql.append("AND s.group_id = ? ");
+        }
+        if (teacherId != null) {
+            sql.append("AND g.teacher_id = ? ");
         }
         sql.append("ORDER BY s.last_name, s.first_name");
         List<Student> list = new ArrayList<>();
@@ -150,9 +177,13 @@ public class StudentDAO {
                 String like = "%" + text.trim().toLowerCase() + "%";
                 ps.setString(i++, like);
                 ps.setString(i++, like);
+                ps.setString(i++, like);
             }
             if (groupId != null) {
-                ps.setInt(i, groupId);
+                ps.setInt(i++, groupId);
+            }
+            if (teacherId != null) {
+                ps.setInt(i, teacherId);
             }
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -176,6 +207,44 @@ public class StudentDAO {
             ps.setString(1, personalCode);
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next();
+            }
+        }
+    }
+
+    /**
+     * Pārbauda, vai personas kods jau pieder citam studentam (izmanto, labojot esošu ierakstu).
+     *
+     * @param personalCode personas kods
+     * @param excludeStudentId pašreiz labojamā studenta id
+     * @return true, ja personas kods jau eksistē citam studentam
+     * @throws SQLException datu bāzes kļūda
+     */
+    public boolean personalCodeExistsForOther(String personalCode, int excludeStudentId) throws SQLException {
+        try (Connection c = DBConnection.getConnection();
+                PreparedStatement ps = c.prepareStatement(
+                        "SELECT 1 FROM STUDENTS WHERE personal_code = ? AND id <> ?")) {
+            ps.setString(1, personalCode);
+            ps.setInt(2, excludeStudentId);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
+
+    /**
+     * Saskaita studentu skaitu norādītajā grupā.
+     *
+     * @param groupId grupas id
+     * @return studentu skaits grupā
+     * @throws SQLException datu bāzes kļūda
+     */
+    public int countByGroup(int groupId) throws SQLException {
+        try (Connection c = DBConnection.getConnection();
+                PreparedStatement ps = c.prepareStatement(
+                        "SELECT COUNT(*) FROM STUDENTS WHERE group_id = ?")) {
+            ps.setInt(1, groupId);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getInt(1) : 0;
             }
         }
     }

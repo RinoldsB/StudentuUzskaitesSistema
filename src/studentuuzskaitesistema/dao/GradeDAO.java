@@ -13,7 +13,7 @@ import studentuuzskaitesistema.model.Grade;
 import studentuuzskaitesistema.util.Validator;
 
 /**
- * Datu piekļuve tabulai GRADES (sekmes un atskaites).
+ * Datu piekļuve tabulai GRADES (sekmju ievade, labošana, dzēšana un atskaites).
  */
 public class GradeDAO {
 
@@ -63,7 +63,7 @@ public class GradeDAO {
     }
 
     /**
-     * Atjaunina sekmi (priekšmetu, vērtējumu un datumu).
+     * Atjaunina sekmi (studentu, priekšmetu, vērtējumu un datumu).
      *
      * @param g sekme ar aizpildītu id
      * @return true, ja atjaunināta
@@ -73,13 +73,14 @@ public class GradeDAO {
         if (!Validator.isValidGrade(g.getGrade())) {
             throw new IllegalArgumentException("Sekmei jābūt no 1 līdz 10");
         }
-        String sql = "UPDATE GRADES SET subject=?, grade=?, grade_date=? WHERE id=?";
+        String sql = "UPDATE GRADES SET student_id=?, subject=?, grade=?, grade_date=? WHERE id=?";
         try (Connection c = DBConnection.getConnection();
                 PreparedStatement ps = c.prepareStatement(sql)) {
-            ps.setString(1, g.getSubject());
-            ps.setInt(2, g.getGrade());
-            ps.setDate(3, Date.valueOf(g.getGradeDate()));
-            ps.setInt(4, g.getId());
+            ps.setInt(1, g.getStudentId());
+            ps.setString(2, g.getSubject());
+            ps.setInt(3, g.getGrade());
+            ps.setDate(4, Date.valueOf(g.getGradeDate()));
+            ps.setInt(5, g.getId());
             return ps.executeUpdate() == 1;
         }
     }
@@ -97,6 +98,40 @@ public class GradeDAO {
             ps.setInt(1, id);
             return ps.executeUpdate() == 1;
         }
+    }
+
+    /**
+     * Atgriež visas sistēmā reģistrētās sekmes.
+     *
+     * @return sekmju saraksts
+     * @throws SQLException datu bāzes kļūda
+     */
+    public List<Grade> findAll() throws SQLException {
+        List<Grade> list = new ArrayList<>();
+        String sql = SELECT_BASE + "ORDER BY gr.grade_date DESC, gr.id DESC";
+        try (Connection c = DBConnection.getConnection();
+                PreparedStatement ps = c.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                list.add(map(rs));
+            }
+        }
+        return list;
+    }
+
+    /**
+     * Atgriež sekmes tikai konkrētajam pasniedzējam piešķirto grupu studentiem.
+     *
+     * @param teacherId pasniedzēja lietotāja id
+     * @return sekmju saraksts
+     * @throws SQLException datu bāzes kļūda
+     */
+    public List<Grade> findByTeacher(int teacherId) throws SQLException {
+        String sql = SELECT_BASE
+                + "JOIN STUDENT_GROUPS g ON s.group_id = g.id "
+                + "WHERE g.teacher_id = ? "
+                + "ORDER BY gr.grade_date DESC, gr.id DESC";
+        return query(sql, teacherId);
     }
 
     /**
@@ -139,7 +174,7 @@ public class GradeDAO {
      * Aprēķina studenta vidējo vērtējumu.
      *
      * @param studentId studenta id
-     * @return vidējais vērtējums vai 0, ja sekmju nav
+     * @return vidējais vērtējums vai 0.0, ja sekmju nav
      * @throws SQLException datu bāzes kļūda
      */
     public double averageForStudent(int studentId) throws SQLException {
@@ -149,6 +184,44 @@ public class GradeDAO {
             ps.setInt(1, studentId);
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next() ? rs.getDouble(1) : 0.0;
+            }
+        }
+    }
+
+    /**
+     * Aprēķina grupas visu studentu vidējo vērtējumu.
+     *
+     * @param groupId grupas id
+     * @return grupas vidējais vērtējums vai 0.0, ja sekmju nav
+     * @throws SQLException datu bāzes kļūda
+     */
+    public double averageForGroup(int groupId) throws SQLException {
+        String sql = "SELECT AVG(CAST(gr.grade AS DOUBLE)) "
+                + "FROM GRADES gr JOIN STUDENTS s ON gr.student_id = s.id "
+                + "WHERE s.group_id = ?";
+        try (Connection c = DBConnection.getConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setInt(1, groupId);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getDouble(1) : 0.0;
+            }
+        }
+    }
+
+    /**
+     * Atgriež studenta sekmju skaitu.
+     *
+     * @param studentId studenta id
+     * @return sekmju skaits
+     * @throws SQLException datu bāzes kļūda
+     */
+    public int countForStudent(int studentId) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM GRADES WHERE student_id = ?";
+        try (Connection c = DBConnection.getConnection();
+                PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setInt(1, studentId);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getInt(1) : 0;
             }
         }
     }

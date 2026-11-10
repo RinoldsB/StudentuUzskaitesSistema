@@ -8,7 +8,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 /**
- * Drošai paroļu jaucējvērtību izveidei un pārbaudei.
+ * Palīgklase drošai paroļu jaucējvērtību (PBKDF2WithHmacSHA256) izveidei un pārbaudei.
  */
 public final class PasswordUtil {
 
@@ -22,7 +22,10 @@ public final class PasswordUtil {
     }
 
     /**
-     * Izveido paroli ar PBKDF2 un nejaušu sāli.
+     * Izveido paroles jaucējvērtību ar PBKDF2 algoritmu un nejaušu sāli.
+     *
+     * @param password nešifrēta parole
+     * @return formatēta jaucējvērtības virkne
      */
     public static String hash(String password) {
         if (password == null || password.isEmpty()) {
@@ -42,6 +45,10 @@ public final class PasswordUtil {
 
     /**
      * Pārbauda ievadīto paroli pret saglabāto jaucējvērtību.
+     *
+     * @param password ievadītā parole
+     * @param storedHash datu bāzē saglabātā jaucējvērtība
+     * @return {@code true}, ja parole sakrīt
      */
     public static boolean verify(String password, String storedHash) {
         if (password == null || storedHash == null) {
