@@ -29,9 +29,9 @@
                   </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFullName" max="32767" attributes="0"/>
-                      <Component id="txtRegUsername" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtRegPassword" alignment="0" pref="146" max="32767" attributes="0"/>
+                      <Component id="txtFullName" min="-2" pref="160" max="-2" attributes="0"/>
+                      <Component id="txtRegUsername" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                      <Component id="txtRegPassword" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
@@ -232,8 +232,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtLastName" max="32767" attributes="0"/>
-                              <Component id="txtFirstName" max="32767" attributes="0"/>
+                              <Component id="txtLastName" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="txtFirstName" min="-2" pref="140" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -329,10 +329,16 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Vards:"/>
+            <Property name="text" type="java.lang.String" value="V&#x101;rds:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFirstName">
+          <Properties>
+            <Property name="columns" type="int" value="14"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFirstNameActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -340,6 +346,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLastName">
+          <Properties>
+            <Property name="columns" type="int" value="14"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -347,6 +356,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPersonalCode">
+          <Properties>
+            <Property name="columns" type="int" value="14"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -355,7 +367,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gruppa:"/>
+            <Property name="text" type="java.lang.String" value="Grupa:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
@@ -364,8 +376,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPhone">
+          <Properties>
+            <Property name="columns" type="int" value="16"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmail">
+          <Properties>
+            <Property name="columns" type="int" value="16"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbGroup">
           <Properties>
